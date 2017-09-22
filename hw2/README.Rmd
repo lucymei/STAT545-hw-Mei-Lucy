@@ -1,0 +1,2 @@
+#STAT545 hw02
+This is the repository for STAT545 hw02.
