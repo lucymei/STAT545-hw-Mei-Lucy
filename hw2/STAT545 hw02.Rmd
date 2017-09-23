@@ -1,0 +1,52 @@
+---
+output: 
+  html_document: 
+    keep_md: yes
+---
+#This is STAT545 hw02 from Lucy Mei
+# Bring rectangular data in
+```{r}
+library(gapminder)
+library(tidyverse)
+```
+
+
+# Smell test the data
+```{r}
+typeof(gapminder)
+str(gapminder)
+```
+gapminder is a list?
+Its class is data.frame.
+There are 6 variables and 1704 rows.
+Yes, there are different ways of getting the extend or size. str() can give an overall view of the data. ?
+```{r}
+str(gapminder)
+
+dim(gapminder)
+
+ncol(gapminder)
+nrow(gapminder)
+```
+The data type of each variable.
+```{r}
+sapply(gapminder, class)
+```
+  country continent      year   lifeExp       pop gdpPercap 
+ "factor"  "factor" "integer" "numeric" "integer" "numeric" 
+ 
+# Explore individual variables
+For country and gdpPercap
+The possible values or range of each variable.The variability of gdpPercap is within 0-60000 with most of the countries have gdpPercap between 0-1000. A large proportion of countries are in Africa and similar amount of countries from Americas, Asia and Europe with only fewer than 50 countries from Oceania.
+```{r}
+hist(gapminder$gdpPercap)
+barplot(table(gapminder$continent))
+```
+
+# Explore various ploty types
+```{r}
+ggplot(gapminder, aes(x=lifeExp, y=gdpPercap)) + geom_point(alpha=0.15)
+barplot(table(gapminder$continent))
+ggplot(filter(gapminder, continent=="Europe"), aes(x=country, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.25)
+```
+
