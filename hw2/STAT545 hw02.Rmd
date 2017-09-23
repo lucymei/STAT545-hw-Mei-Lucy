@@ -49,4 +49,15 @@ ggplot(gapminder, aes(x=lifeExp, y=gdpPercap)) + geom_point(alpha=0.15)
 barplot(table(gapminder$continent))
 ggplot(filter(gapminder, continent=="Europe"), aes(x=country, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.25)
 ```
+# Use filter(), select() and %>%
+A plot that shows the trends of gdp per capita less than 35000 of Canada and Finland.
+```{r}
+select(filter(gapminder, 
+              country %in% c("Canada", "Finland"), 
+              gdpPercap < 35000), 
+       country, year, gdpPercap) %>%
+  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5)
+
+
+```
 
