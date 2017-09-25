@@ -1,8 +1,10 @@
 ---
+title: "Untitled"
 output: 
   html_document: 
     keep_md: yes
 ---
+
 #This is STAT545 hw02 from Lucy Mei
 # Bring rectangular data in
 ```{r}
