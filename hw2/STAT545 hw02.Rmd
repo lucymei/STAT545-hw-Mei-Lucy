@@ -56,7 +56,7 @@ select(filter(gapminder,
               country %in% c("Canada", "Finland"), 
               gdpPercap < 35000), 
        country, year, gdpPercap) %>%
-  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5)
+  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5) + geom_smooth()
 
 ```
 
@@ -67,14 +67,19 @@ The correct way should be the following.
 ```{r}
 filter(gapminder, country == "Rwanda" | country == "Afghanistan")
 ```
-```{r}
+```{r, results='asis'}
+library(gapminder)
+library(tidyverse)
 x <- select(filter(gapminder, continent =="Americas", year >= 1970, year <= 1979), country, year, gdpPercap)
 library(knitr)
 
-
+knitr::kable(x,
+             digits = 4,
+             caption = "GDP per capita of Asian",
+             align = c("c"),
+             padding = 3)
 ```
 
 
 # Report your process
-In general I can figure out most of the questions. The additional part of the hw is a little bit challenging to me. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
-I think using knitr::kable() to make a table is a bit confusing to me. I am not sure what format.args mean.
+In general I can figure out most of the questions. The additional part of the hw is a little bit challenging. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 

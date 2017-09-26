@@ -146,7 +146,11 @@ select(filter(gapminder,
               country %in% c("Canada", "Finland"), 
               gdpPercap < 35000), 
        country, year, gdpPercap) %>%
-  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5)
+  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5) + geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'loess'
 ```
 
 ![](STAT545_hw02_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
@@ -178,11 +182,75 @@ filter(gapminder, country == "Rwanda" | country == "Afghanistan")
 ```
 
 ```r
+library(gapminder)
+library(tidyverse)
 x <- select(filter(gapminder, continent =="Americas", year >= 1970, year <= 1979), country, year, gdpPercap)
 library(knitr)
+
+knitr::kable(x,
+             digits = 4,
+             caption = "GDP per capita of Asian",
+             align = c("c"),
+             padding = 3)
 ```
 
 
+
+Table: GDP per capita of Asian
+
+         country              year        gdpPercap   
+-------------------------  ----------  ---------------
+        Argentina             1972        9443.039    
+        Argentina             1977        10079.027   
+         Bolivia              1972        2980.331    
+         Bolivia              1977        3548.098    
+         Brazil               1972        4985.712    
+         Brazil               1977        6660.119    
+         Canada               1972        18970.571   
+         Canada               1977        22090.883   
+          Chile               1972        5494.024    
+          Chile               1977        4756.764    
+        Colombia              1972        3264.660    
+        Colombia              1977        3815.808    
+       Costa Rica             1972        5118.147    
+       Costa Rica             1977        5926.877    
+          Cuba                1972        5305.445    
+          Cuba                1977        6380.495    
+   Dominican Republic         1972        2189.874    
+   Dominican Republic         1977        2681.989    
+         Ecuador              1972        5280.995    
+         Ecuador              1977        6679.623    
+       El Salvador            1972        4520.246    
+       El Salvador            1977        5138.922    
+        Guatemala             1972        4031.408    
+        Guatemala             1977        4879.993    
+          Haiti               1972        1654.457    
+          Haiti               1977        1874.299    
+        Honduras              1972        2529.842    
+        Honduras              1977        3203.208    
+         Jamaica              1972        7433.889    
+         Jamaica              1977        6650.196    
+         Mexico               1972        6809.407    
+         Mexico               1977        7674.929    
+        Nicaragua             1972        4688.593    
+        Nicaragua             1977        5486.371    
+         Panama               1972        5364.250    
+         Panama               1977        5351.912    
+        Paraguay              1972        2523.338    
+        Paraguay              1977        3248.373    
+          Peru                1972        5937.827    
+          Peru                1977        6281.291    
+       Puerto Rico            1972        9123.042    
+       Puerto Rico            1977        9770.525    
+   Trinidad and Tobago        1972        6619.551    
+   Trinidad and Tobago        1977        7899.554    
+      United States           1972        21806.036   
+      United States           1977        24072.632   
+         Uruguay              1972        5703.409    
+         Uruguay              1977        6504.340    
+        Venezuela             1972        10505.260   
+        Venezuela             1977        13143.951   
+
+
 # Report your process
-In general I can figure out most of the questions. The additional part of the hw is a little bit challenging to me. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
-I think using knitr::kable() to make a table is a bit confusing to me. I am not sure what format.args mean.
+In general I can figure out most of the questions. The additional part of the hw is a little bit challenging. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
