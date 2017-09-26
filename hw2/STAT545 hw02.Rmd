@@ -19,7 +19,7 @@ str(gapminder)
 gapminder is a list?
 Its class is data.frame.
 There are 6 variables and 1704 rows.
-Yes, there are different ways of getting the extend or size. str() can give an overall view of the data. ?
+Yes, there are different ways of getting the extend or size. str() can give an overall view of the data whereas dim() and ncol(), nrow() give a specific answer to the size.
 ```{r}
 str(gapminder)
 
@@ -36,7 +36,7 @@ sapply(gapminder, class)
  "factor"  "factor" "integer" "numeric" "integer" "numeric" 
  
 # Explore individual variables
-For country and gdpPercap
+For country and gdpPercap:
 The possible values or range of each variable.The variability of gdpPercap is within 0-60000 with most of the countries have gdpPercap between 0-1000. A large proportion of countries are in Africa and similar amount of countries from Americas, Asia and Europe with only fewer than 50 countries from Oceania.
 ```{r}
 hist(gapminder$gdpPercap)
@@ -70,7 +70,13 @@ filter(gapminder, country == "Rwanda" | country == "Afghanistan")
 ```{r}
 x <- select(filter(gapminder, continent =="Americas", year >= 1970, year <= 1979), country, year, gdpPercap)
 library(knitr)
-kable(x, format = "latex", digits = 5, row.names = (gapminder$country), col.names = (gapminder$year), c, caption = "GDP per captia of Asian countries in 70s",escape = TRUE)
+
+knitr::kable(x,
+             format = "pandoc,"
+             digits = 4,
+             caption = "GDP per capita of Asian",
+             align = c("c"),
+             padding = 3)
 ```
 
 
