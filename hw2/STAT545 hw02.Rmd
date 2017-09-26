@@ -16,7 +16,7 @@ library(tidyverse)
 typeof(gapminder)
 str(gapminder)
 ```
-gapminder is a list?
+gapminder is data.frame and if use typeof function it gives it as a list.
 Its class is data.frame.
 There are 6 variables and 1704 rows.
 Yes, there are different ways of getting the extend or size. str() can give an overall view of the data whereas dim() and ncol(), nrow() give a specific answer to the size.
@@ -37,18 +37,32 @@ sapply(gapminder, class)
  
 # Explore individual variables
 For country and gdpPercap:
-The possible values or range of each variable.The variability of gdpPercap is within 0-60000 with most of the countries have gdpPercap between 0-1000. A large proportion of countries are in Africa and similar amount of countries from Americas, Asia and Europe with only fewer than 50 countries from Oceania.
+1) What are possible values of the variables?
+The min value of gdp per capita is 241.2 and the max is 113500.
+
+2) What's the spread? Whats the distribution?
+The variability of gdpPercap is within 0-60000 with most of the countries have gdpPercap between 0-1000. A large proportion of countries are in Africa and similar amount of countries from Americas, Asia and Europe with only fewer than 50 countries from Oceania.
+
 ```{r}
+summary(gapminder$gdpPercap)
+
 hist(gapminder$gdpPercap)
 barplot(table(gapminder$continent))
 ```
 
 # Explore various ploty types
+1) A scatterplot of two quantitative variables.
+2) A plot of one quantitative variable.
+3) A plot of one quantitative variable and one categorical.
 ```{r}
 ggplot(gapminder, aes(x=lifeExp, y=gdpPercap)) + geom_point(alpha=0.15)
+
 barplot(table(gapminder$continent))
+
 ggplot(filter(gapminder, continent=="Europe"), aes(x=country, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.25)
 ```
+
+
 # Use filter(), select() and %>%
 A plot that shows the trends of gdp per capita less than 35000 of Canada and Finland.
 ```{r}
@@ -56,9 +70,10 @@ select(filter(gapminder,
               country %in% c("Canada", "Finland"), 
               gdpPercap < 35000), 
        country, year, gdpPercap) %>%
-  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5) + geom_smooth()
+  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5) + geom_smooth(method="lm")
 
 ```
+
 
 # But I want to do more!
 This code filters the data of Afghanistan and Rwanda as a set/vector according to the order of year. For example, Rwanda 1952 and Afghanistan 1957 are included but Afghanistan 1952 and Rwanda 1957 are not included. Since Rwanda is the first term in the vector, therefore, the filtered data starts with Rwanda 1952. 
@@ -76,10 +91,12 @@ library(knitr)
 knitr::kable(x,
              digits = 4,
              caption = "GDP per capita of Asian",
-             align = c("c"),
+             align = c("l"),
              padding = 3)
 ```
 
 
 # Report your process
-In general I can figure out most of the questions. The additional part of the hw is a little bit challenging. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
+In general I can figure out most of the questions. 
+The additional part of the hw is a little bit challenging. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
+There are many ways to organize a table and I think it is important to find a way make a table tailored to my own purpose. I am interested in learning more about this through online tutorial and tools.
