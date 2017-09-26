@@ -172,7 +172,7 @@ select(filter(gapminder,
 
 
 # But I want to do more!
-This code filters the data of Afghanistan and Rwanda as a set/vector according to the order of year. For example, Rwanda 1952 and Afghanistan 1957 are included but Afghanistan 1952 and Rwanda 1957 are not included. Since Rwanda is the first term in the vector, therefore, the filtered data starts with Rwanda 1952. 
+1. This code filters the data of Afghanistan and Rwanda as a set/vector according to the order of year. For example, Rwanda 1952 and Afghanistan 1957 are included but Afghanistan 1952 and Rwanda 1957 are not included. Since Rwanda is the first term in the vector, therefore, the filtered data starts with Rwanda 1952. 
 It is not the correct way to select data for Rwanda and Afghanistan since half of the data from Rwanda and Afghanistan is not included in this filtered list.
 The correct way should be the following.
 
@@ -266,6 +266,20 @@ Uruguay                 1972     5703.409
 Uruguay                 1977     6504.340    
 Venezuela               1972     10505.260   
 Venezuela               1977     13143.951   
+2) I made a my own table above.
+
+3) Exploration
+
+```r
+library(gapminder)
+ggplot(gapminder, aes(pop, country)) + geom_boxplot(aes(x=pop, y=country))
+```
+
+```
+## Warning: position_dodge requires non-overlapping x intervals
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 
 # Report your process
