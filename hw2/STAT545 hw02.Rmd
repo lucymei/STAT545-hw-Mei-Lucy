@@ -71,12 +71,7 @@ filter(gapminder, country == "Rwanda" | country == "Afghanistan")
 x <- select(filter(gapminder, continent =="Americas", year >= 1970, year <= 1979), country, year, gdpPercap)
 library(knitr)
 
-knitr::kable(x,
-             format = "pandoc,"
-             digits = 4,
-             caption = "GDP per capita of Asian",
-             align = c("c"),
-             padding = 3)
+
 ```
 
 

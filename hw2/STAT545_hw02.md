@@ -1,0 +1,188 @@
+#This is STAT545 hw02 from Lucy Mei
+# Bring rectangular data in
+
+```r
+library(gapminder)
+library(tidyverse)
+```
+
+```
+## Loading tidyverse: ggplot2
+## Loading tidyverse: tibble
+## Loading tidyverse: tidyr
+## Loading tidyverse: readr
+## Loading tidyverse: purrr
+## Loading tidyverse: dplyr
+```
+
+```
+## Conflicts with tidy packages ----------------------------------------------
+```
+
+```
+## filter(): dplyr, stats
+## lag():    dplyr, stats
+```
+
+
+# Smell test the data
+
+```r
+typeof(gapminder)
+```
+
+```
+## [1] "list"
+```
+
+```r
+str(gapminder)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
+##  $ gdpPercap: num  779 821 853 836 740 ...
+```
+gapminder is a list?
+Its class is data.frame.
+There are 6 variables and 1704 rows.
+Yes, there are different ways of getting the extend or size. str() can give an overall view of the data whereas dim() and ncol(), nrow() give a specific answer to the size.
+
+```r
+str(gapminder)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	1704 obs. of  6 variables:
+##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
+##  $ gdpPercap: num  779 821 853 836 740 ...
+```
+
+```r
+dim(gapminder)
+```
+
+```
+## [1] 1704    6
+```
+
+```r
+ncol(gapminder)
+```
+
+```
+## [1] 6
+```
+
+```r
+nrow(gapminder)
+```
+
+```
+## [1] 1704
+```
+The data type of each variable.
+
+```r
+sapply(gapminder, class)
+```
+
+```
+##   country continent      year   lifeExp       pop gdpPercap 
+##  "factor"  "factor" "integer" "numeric" "integer" "numeric"
+```
+  country continent      year   lifeExp       pop gdpPercap 
+ "factor"  "factor" "integer" "numeric" "integer" "numeric" 
+ 
+# Explore individual variables
+For country and gdpPercap:
+The possible values or range of each variable.The variability of gdpPercap is within 0-60000 with most of the countries have gdpPercap between 0-1000. A large proportion of countries are in Africa and similar amount of countries from Americas, Asia and Europe with only fewer than 50 countries from Oceania.
+
+```r
+hist(gapminder$gdpPercap)
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+```r
+barplot(table(gapminder$continent))
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-5-2.png)<!-- -->
+
+# Explore various ploty types
+
+```r
+ggplot(gapminder, aes(x=lifeExp, y=gdpPercap)) + geom_point(alpha=0.15)
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+```r
+barplot(table(gapminder$continent))
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
+
+```r
+ggplot(filter(gapminder, continent=="Europe"), aes(x=country, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.25)
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-6-3.png)<!-- -->
+# Use filter(), select() and %>%
+A plot that shows the trends of gdp per capita less than 35000 of Canada and Finland.
+
+```r
+select(filter(gapminder, 
+              country %in% c("Canada", "Finland"), 
+              gdpPercap < 35000), 
+       country, year, gdpPercap) %>%
+  ggplot(aes(x=year, y=gdpPercap)) + geom_point(aes(color=country), alpha=0.5)
+```
+
+![](STAT545_hw02_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+# But I want to do more!
+This code filters the data of Afghanistan and Rwanda as a set/vector according to the order of year. For example, Rwanda 1952 and Afghanistan 1957 are included but Afghanistan 1952 and Rwanda 1957 are not included. Since Rwanda is the first term in the vector, therefore, the filtered data starts with Rwanda 1952. 
+It is not the correct way to select data for Rwanda and Afghanistan since half of the data from Rwanda and Afghanistan is not included in this filtered list.
+The correct way should be the following.
+
+```r
+filter(gapminder, country == "Rwanda" | country == "Afghanistan")
+```
+
+```
+## # A tibble: 24 x 6
+##        country continent  year lifeExp      pop gdpPercap
+##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan      Asia  1952  28.801  8425333  779.4453
+##  2 Afghanistan      Asia  1957  30.332  9240934  820.8530
+##  3 Afghanistan      Asia  1962  31.997 10267083  853.1007
+##  4 Afghanistan      Asia  1967  34.020 11537966  836.1971
+##  5 Afghanistan      Asia  1972  36.088 13079460  739.9811
+##  6 Afghanistan      Asia  1977  38.438 14880372  786.1134
+##  7 Afghanistan      Asia  1982  39.854 12881816  978.0114
+##  8 Afghanistan      Asia  1987  40.822 13867957  852.3959
+##  9 Afghanistan      Asia  1992  41.674 16317921  649.3414
+## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414
+## # ... with 14 more rows
+```
+
+```r
+x <- select(filter(gapminder, continent =="Americas", year >= 1970, year <= 1979), country, year, gdpPercap)
+library(knitr)
+```
+
+
+# Report your process
+In general I can figure out most of the questions. The additional part of the hw is a little bit challenging to me. I found out the answer to filter(gapminder, country == c("Rwanda", "Afghanistan")) by comparing the differences between using vectors and the normal way I would do it. 
+I think using knitr::kable() to make a table is a bit confusing to me. I am not sure what format.args mean.
