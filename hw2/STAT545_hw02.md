@@ -174,6 +174,29 @@ select(filter(gapminder,
 # But I want to do more!
 1. This code filters the data of Afghanistan and Rwanda as a set/vector according to the order of year. For example, Rwanda 1952 and Afghanistan 1957 are included but Afghanistan 1952 and Rwanda 1957 are not included. Since Rwanda is the first term in the vector, therefore, the filtered data starts with Rwanda 1952. 
 It is not the correct way to select data for Rwanda and Afghanistan since half of the data from Rwanda and Afghanistan is not included in this filtered list.
+
+```r
+filter(gapminder, country == c("Rwanda", "Afghanistan"))
+```
+
+```
+## # A tibble: 12 x 6
+##        country continent  year lifeExp      pop gdpPercap
+##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan      Asia  1957  30.332  9240934  820.8530
+##  2 Afghanistan      Asia  1967  34.020 11537966  836.1971
+##  3 Afghanistan      Asia  1977  38.438 14880372  786.1134
+##  4 Afghanistan      Asia  1987  40.822 13867957  852.3959
+##  5 Afghanistan      Asia  1997  41.763 22227415  635.3414
+##  6 Afghanistan      Asia  2007  43.828 31889923  974.5803
+##  7      Rwanda    Africa  1952  40.000  2534927  493.3239
+##  8      Rwanda    Africa  1962  43.000  3051242  597.4731
+##  9      Rwanda    Africa  1972  44.600  3992121  590.5807
+## 10      Rwanda    Africa  1982  46.218  5507565  881.5706
+## 11      Rwanda    Africa  1992  23.599  7290203  737.0686
+## 12      Rwanda    Africa  2002  43.413  7852401  785.6538
+```
+
 The correct way should be the following.
 
 ```r
@@ -279,7 +302,7 @@ ggplot(gapminder, aes(pop, country)) + geom_boxplot(aes(x=pop, y=country))
 ## Warning: position_dodge requires non-overlapping x intervals
 ```
 
-![](STAT545_hw02_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](STAT545_hw02_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 
 # Report your process
