@@ -20,10 +20,10 @@ library(tidyverse)
 
 ## Task menu
 1. Get the maximum and minimum of GDP per capita for all continents.
-```{r}
+```{r results = 'asis'}
   gdp <- gapminder %>% group_by(continent) %>% summarize(max_gdpPercap=max(gdpPercap), min_gdpPercap=min(gdpPercap))
   knitr::kable(gdp)
-  
+  ggplot(gdp, aes(continent, max_gdpPercap)) + geom_point(aes(continent, max_gdpPercap,color=continent)) + geom_point(aes(continent, min_gdpPercap, color=continent))
 ```
 
 
