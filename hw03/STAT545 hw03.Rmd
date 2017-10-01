@@ -106,6 +106,8 @@ ggplot(gtbl,aes(x=continent,y=gdpPercap, color = continent)) + geom_point() + gg
 ```
 
 
+# Report my process
+1. I struggled on counting the occurence of a certain variable within a group.
 
 
 
