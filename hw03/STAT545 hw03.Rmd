@@ -23,11 +23,23 @@ library(tidyverse)
 ```{r results = 'asis'}
   gdp <- gapminder %>% group_by(continent) %>% summarize(max_gdpPercap=max(gdpPercap), min_gdpPercap=min(gdpPercap))
   knitr::kable(gdp)
-  ggplot(gdp, aes(continent, max_gdpPercap)) + geom_point(aes(continent, max_gdpPercap,color=continent)) + geom_point(aes(continent, min_gdpPercap, color=continent))
+  ggplot(gdp, aes(continent, max_gdpPercap)) + geom_point(aes(continent, max_gdpPercap,color=continent)) + geom_point(aes(continent, min_gdpPercap, color=continent)) + 
+    theme_bw() + labs(x="Continent", y="Max and Min GDP per capita", title="The Maximum and Minimum GDP per capita of all Continents")
 ```
 
 
 2. Look at the spread of GDP per capita within the continents.
+
+```{r}
+p1 <-gapminder %>% select(gdpPercap, lifeExp, continent)
+p2 <- ggplot(p1, aes(gdpPercap,lifeExp)) + facet_wrap(~ continent) + geom_point(aes(gdpPercap, lifeExp), color="skyblue3", alpha=0.25) + scale_x_log10()
+p2 + theme(strip.background = element_rect(fill="darkolivegreen2"),
+           strip.text = element_text(face="bold")) + labs(x="GDP per capita", y="Life Expectancy", title ="The relationship between Life Expectancy and GDP per capita of each continent")
+           
+```
+
+
+
 3. Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
 4. How is life expectancy changing over time on different continents?
 5. Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy - you decide - a mean or median or some other quantile or perhaps your current age. THen determine how many countries on each continent have a life expectancy less than this bench mark, for each year.
