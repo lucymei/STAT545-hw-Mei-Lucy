@@ -1,9 +1,6 @@
----
-title: "Untitled"
-output: 
-  html_document: 
-    keep_md: yes
----
+
 
 ## This is homework 03 from Lucy Mei.
+
+[Here](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw03/STAT545_hw03.md) is the link.
 
