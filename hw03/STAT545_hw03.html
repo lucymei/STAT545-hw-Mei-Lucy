@@ -207,7 +207,7 @@ kable(gdp, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Con
 <pre class="r"><code>gdp_time &lt;- gapminder %&gt;%
   group_by (continent, year) %&gt;%
   summarize(mingdpt = min(gdpPercap), maxgdpt = max(gdpPercap))
-knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Min GDP per capita&quot;, &quot;Max GDP per capita&quot;))</code></pre>
+kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Min GDP per capita&quot;, &quot;Max GDP per capita&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -595,6 +595,7 @@ knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names =
 </div>
 <div id="look-at-the-spread-of-gdp-per-capita-within-the-continents." class="section level2">
 <h2>2. Look at the spread of GDP per capita within the continents.</h2>
+<p>This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.</p>
 <pre class="r"><code>p1 &lt;-gapminder %&gt;% 
   group_by(continent) %&gt;%
   summarize(mingdp = min(gdpPercap),
@@ -602,7 +603,7 @@ knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names =
          gdpmean = mean(gdpPercap), 
          gdpvariant = var(gdpPercap), 
          gdpmedian = median(gdpPercap))
-knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Min GDP per cap&quot;, &quot;Max GDP per cap&quot;, &quot;Mean&quot;, &quot;Variant&quot;, &quot;Median&quot;))</code></pre>
+kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Min GDP per cap&quot;, &quot;Max GDP per cap&quot;, &quot;Mean&quot;, &quot;Variant&quot;, &quot;Median&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -657,7 +658,6 @@ knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c(&qu
 </tr>
 </tbody>
 </table>
-<p>This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.</p>
 <pre class="r"><code>p2 &lt;- ggplot(gapminder, aes(gdpPercap,lifeExp)) + 
   facet_wrap(~ continent) + 
   geom_point(aes(gdpPercap, lifeExp), color=&quot;skyblue3&quot;, alpha=0.25) +
@@ -675,12 +675,13 @@ p2 +
 </div>
 <div id="compute-a-trimmed-mean-of-life-expectancy-for-different-years.-or-a-weighted-mean-weighting-by-population.-just-try-something-other-than-the-plain-vanilla-mean." class="section level2">
 <h2>3. Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.</h2>
+<p>This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.</p>
 <pre class="r"><code>lifeExpweighted &lt;- gapminder %&gt;%
   filter(continent ==&quot;Asia&quot;) %&gt;%
   group_by(year) %&gt;%
   summarize(Weightedmean = weighted.mean(lifeExp, pop), Mean = mean(lifeExp))
 
-knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Year&quot;, &quot;Weighted Mean&quot;, &quot;Mean&quot;))</code></pre>
+kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Year&quot;, &quot;Weighted Mean&quot;, &quot;Mean&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -752,7 +753,6 @@ knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.
 </tr>
 </tbody>
 </table>
-<p>This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.</p>
 <pre class="r"><code>ggplot(lifeExpweighted, aes(year, Mean)) +
   geom_line(aes(year, Weightedmean), color=&quot;blue&quot;) +
   geom_line(aes(year, Mean), color =&quot;red&quot;) +
@@ -789,13 +789,13 @@ l1 + theme_bw() +
 ##  Max.   :1.319e+09   Max.   :113523.1  
 ## </code></pre>
 <pre class="r"><code># The low life expectancy is set using mean = 59.47</code></pre>
-<p>I set the mark of low life expectancy using the mean, which is 59.47.</p>
+<p>I set the mark of low life expectancy using the mean, which is 59.47. This is a table counting the number of countries of each continent with low life expectancy in each recorded year.</p>
 <pre class="r"><code>ll1 &lt;- gapminder %&gt;%
   filter(lifeExp &lt; 59.47) %&gt;%
   group_by(continent, year) %&gt;%
   summarize(country_count = n())
 
-knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Number of Countries&quot;))</code></pre>
+kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Number of Countries&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -1007,7 +1007,6 @@ knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c(&q
 </tr>
 </tbody>
 </table>
-<p>This is a table counting the number of countries of each continent with low life expectancy in each recorded year.</p>
 <pre class="r"><code>ggplot(ll1, aes(year, country_count)) +
   facet_wrap(~ continent) +
   geom_area(fill=&quot;skyblue3&quot;) +
@@ -1024,7 +1023,7 @@ knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c(&q
   group_by(continent) %&gt;%
   summarize(total_pop= sum(pop))
 
-knitr::kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
+kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -1064,7 +1063,7 @@ pie(oldpop, labels=oldcontinent, main=&quot;The distribution of world population
   group_by(continent) %&gt;%
   summarize(total_popnew= sum(as.numeric(pop)))
 
-knitr::kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
+kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -1107,7 +1106,7 @@ pie(newpop, labels=newcontinent, main=&quot;The distribution of world population
 table_graph1 &lt;- table_graph %&gt;%
   group_by(continent) %&gt;%
   summarise(meanpop=mean(pop), medianpop=median(pop))
-knitr::kable(table_graph1, col.names = c(&quot;Continent&quot;, &quot;Mean&quot;, &quot;Median&quot;))</code></pre>
+kable(table_graph1, col.names = c(&quot;Continent&quot;, &quot;Mean&quot;, &quot;Median&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">

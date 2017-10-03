@@ -87,7 +87,7 @@ Then, I explored a bit of the max and min according to time.
 gdp_time <- gapminder %>%
   group_by (continent, year) %>%
   summarize(mingdpt = min(gdpPercap), maxgdpt = max(gdpPercap))
-knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Min GDP per capita", "Max GDP per capita"))
+kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Min GDP per capita", "Max GDP per capita"))
 ```
 
 
@@ -184,7 +184,7 @@ From the first plot, it shows the max GDP per capita of Asia dropped drastically
 
 
 ## 2. Look at the spread of GDP per capita within the continents.
-
+This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.
 
 ```r
 p1 <-gapminder %>% 
@@ -194,7 +194,7 @@ p1 <-gapminder %>%
          gdpmean = mean(gdpPercap), 
          gdpvariant = var(gdpPercap), 
          gdpmedian = median(gdpPercap))
-knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Min GDP per cap", "Max GDP per cap", "Mean", "Variant", "Median"))
+kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Min GDP per cap", "Max GDP per cap", "Mean", "Variant", "Median"))
 ```
 
 
@@ -206,7 +206,7 @@ knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c("Co
 |   Asia    |     331.00      |    113523.13    | 7902.15  | 197272506 | 2646.79  |
 |  Europe   |     973.53      |    49357.19     | 14469.48 | 87520020  | 12081.75 |
 |  Oceania  |    10039.60     |    34435.37     | 18621.61 | 40436669  | 17983.30 |
-This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.
+
 
 
 
@@ -239,6 +239,7 @@ This figure displays the distribution of GDP per capita of each continent.
 
 
 ## 3. Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.
 
 ```r
 lifeExpweighted <- gapminder %>%
@@ -246,7 +247,7 @@ lifeExpweighted <- gapminder %>%
   group_by(year) %>%
   summarize(Weightedmean = weighted.mean(lifeExp, pop), Mean = mean(lifeExp))
 
-knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c("Year", "Weighted Mean", "Mean"))
+kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c("Year", "Weighted Mean", "Mean"))
 ```
 
 
@@ -265,7 +266,7 @@ knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.
 | 1997 |     66.77     | 68.02 |
 | 2002 |     68.14     | 69.23 |
 | 2007 |     69.44     | 70.73 |
-This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.
+
 
 
 ```r
@@ -324,7 +325,7 @@ summary(gapminder)
 # The low life expectancy is set using mean = 59.47
 ```
 I set the mark of low life expectancy using the mean, which is 59.47.
-
+This is a table counting the number of countries of each continent with low life expectancy in each recorded year.
 
 ```r
 ll1 <- gapminder %>%
@@ -332,7 +333,7 @@ ll1 <- gapminder %>%
   group_by(continent, year) %>%
   summarize(country_count = n())
 
-knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Number of Countries"))
+kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Number of Countries"))
 ```
 
 
@@ -379,7 +380,7 @@ knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c("C
 |  Europe   | 1962 |          1          |
 |  Europe   | 1967 |          1          |
 |  Europe   | 1972 |          1          |
-This is a table counting the number of countries of each continent with low life expectancy in each recorded year.
+
 
 
 ```r
@@ -404,7 +405,7 @@ oldworldpop <- gapminder %>%
   group_by(continent) %>%
   summarize(total_pop= sum(pop))
 
-knitr::kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
+kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
 ```
 
 
@@ -431,7 +432,7 @@ newworldpop <- gapminder %>%
   group_by(continent) %>%
   summarize(total_popnew= sum(as.numeric(pop)))
 
-knitr::kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
+kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
 ```
 
 
@@ -460,7 +461,7 @@ table_graph <- tbl_df(gapminder)
 table_graph1 <- table_graph %>%
   group_by(continent) %>%
   summarise(meanpop=mean(pop), medianpop=median(pop))
-knitr::kable(table_graph1, col.names = c("Continent", "Mean", "Median"))
+kable(table_graph1, col.names = c("Continent", "Mean", "Median"))
 ```
 
 
