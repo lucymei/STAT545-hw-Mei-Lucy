@@ -140,8 +140,10 @@ summary(gapminder)
 library(plyr)
 ll1 <- gapminder %>%
   filter(lifeExp < 59.47) %>%
-  group_by(year) %>%
-  summarize_each(n_countries = length())
+  group_by(continent, year) %>%
+  summarize(country_count = n_distinct(country))
+
+knitr::kable(ll1)
 
 
   
