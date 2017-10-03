@@ -234,7 +234,7 @@ ggplot(gapminder, aes(gdpPercap)) +
 ```
 
 ![](STAT545_hw03_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
-This figure displays the distribution of GDP per capita of each continent. 
+This figure displays the distribution of GDP per capita of each continent. GDP per capita of Africa focuses on a narrow range whereas the value of GDP per capita of Asia and Oceania spread across a wider range. 
 
 
 
@@ -456,16 +456,6 @@ The population of Asia kept growing and population of Europe decreased.
 
 # But I want to do more!
 
-```r
-table_graph <- tbl_df(gapminder)
-table_graph1 <- table_graph %>%
-  group_by(continent) %>%
-  summarise(meanpop=mean(pop), medianpop=median(pop))
-kable(table_graph1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Mean", "Median"))
-```
-
-
-
 | Continent |   Mean   |  Median  |
 |:---------:|:--------:|:--------:|
 |  Africa   | 9916003  | 4579311  |
@@ -474,26 +464,19 @@ kable(table_graph1, align = 'c', format = 'markdown', digits = 2, col.names = c(
 |  Europe   | 17169765 | 8551125  |
 |  Oceania  | 8874672  | 6403492  |
 
-```r
-ggplot(table_graph, aes(year, pop)) +
-  facet_wrap(~ continent) +
-  geom_point() +
-  labs(x="Year", y="Population", title ="Change of population over time")
-```
-
 ![](STAT545_hw03_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
 
-I tried to explore the layout stretch but I don't think it works.
+To me this seems like putting the table and the figure together. I am not sure if this is what I should expect.
 
 
 # Report my process
-1. I struggled on counting the occurence of a certain variable within a group. I tried to look for solution online but I couldn't find the one that I want. I am not sure if there is an easy way to do it.
+1. I struggled a bit to figure out counting the occurence of a certain variable within a group. I tried to look for solution online but I couldn't find the one that I want. I am not sure if there is an easy way to do it. 
 
-2. There are many different types of graphs that I can make according to what I am looking for. So I tried to include different graphs.
+2. There are many different types of graphs that I can make according to what I am looking for. So I tried to include a variety of them. 
 
-3. When I am doing task 5, after I filtered out low life expectancy data, Oceania data disappears since the life expectancy of Oceania is always higher than the set mark. I am not sure how to keep the graph for Oceania eventhough it is blank.
+3. When I am doing task 5, after I filtered out low life expectancy data, Oceania data disappears since the life expectancy of Oceania is always higher than the set mark. I know Oceania is not showing in the table therefore the figure does not include it. I am wondering how I can make it still appears in the figure eventhough it is blank.
 
-4. In task 6, I want to generate pie chart but I am not sure how to generate it directly from my data set so I used a dump way to manually enter what I wanted to plot.
+4. In task 6, I made a pie chart manually. I think there should be a more convinient way to do it right from the data set but I don't know how to do it.
 
 
 
