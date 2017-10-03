@@ -136,6 +136,7 @@ library(tidyverse)</code></pre>
 <pre><code>## Conflicts with tidy packages ----------------------------------------------</code></pre>
 <pre><code>## filter(): dplyr, stats
 ## lag():    dplyr, stats</code></pre>
+<pre class="r"><code>library(knitr)</code></pre>
 </div>
 <div id="my-mission-high-level" class="section level1">
 <h1>My mission, high-level</h1>
@@ -155,7 +156,7 @@ library(tidyverse)</code></pre>
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-knitr::kable(gdp, col.names = c(&quot;Continent&quot;, &quot;Maximum GDP per capita&quot;, &quot;Minimum GDP per capita&quot;))</code></pre>
+kable(gdp, col.names = c(&quot;Continent&quot;, &quot;Maximum GDP per capita&quot;, &quot;Minimum GDP per capita&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">

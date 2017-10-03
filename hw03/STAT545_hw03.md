@@ -27,6 +27,10 @@ library(tidyverse)
 ## lag():    dplyr, stats
 ```
 
+```r
+library(knitr)
+```
+
 # My mission, high-level
 1. Use dplyr and ggplot2 as tools.
 2. Make observations about what my tables/figures show and about the process. 
@@ -42,7 +46,7 @@ gdp <- gapminder %>%
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-knitr::kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
+kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
 ```
 
 
