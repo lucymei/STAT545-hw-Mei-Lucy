@@ -126,7 +126,7 @@ This is a table with the mean of life expectancy weighted by population and the 
 l1 <- ggplot(gapminder, aes(year, lifeExp)) + 
   facet_wrap(~ continent) + 
   geom_point(aes(year, lifeExp), color = "skyblue", alpha=0.25) +
-  geom_smooth(span=0.5, se=FALSE)
+  geom_smooth(method = "loess",span=0.5, se=FALSE)
 l1 + theme_bw() + 
   labs(x="Year", y="Life Expectancy", title = "Change of Life Expectancy over time")
 
