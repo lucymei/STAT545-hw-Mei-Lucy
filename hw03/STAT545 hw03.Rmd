@@ -140,20 +140,28 @@ Life Expectancy of all continents is increasing with the life expectancy of Euro
 ```{r}
 summary(gapminder)
 # The low life expectancy is set using mean = 59.47
+```
+I set the mark of low life expectancy using the mean, which is 59.47.
 
+```{r}
 ll1 <- gapminder %>%
   filter(lifeExp < 59.47) %>%
   group_by(continent, year) %>%
   summarize(country_count = n())
 
-knitr::kable(ll1)
-
-
-  
-
-
+knitr::kable(ll1, col.names = c("Continent", "Year", "Number of Countries"))
 ```
+This is a table counting the number of countries of each continent with low life expectancy in each recorded year.
 
+```{r}
+ggplot(ll1, aes(year, country_count)) +
+  facet_wrap(~ continent) +
+  geom_area(fill="skyblue3") +
+  theme_bw() +
+  theme(strip.text = element_text(face="bold")) +
+  labs(x="Number of countries", y="Year", title="Amount of countries with low expectancy over time")
+```
+Many countries in Africa have low life expectancy whereas in Europe, people live over 60 years old since 1970.
 
 
 # But I want to do more!
