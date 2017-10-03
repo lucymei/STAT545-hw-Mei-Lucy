@@ -51,7 +51,7 @@ Then, I explored a bit of the max and min according to time.
 gdp_time <- gapminder %>%
   group_by (continent, year) %>%
   summarize(mingdpt = min(gdpPercap), maxgdpt = max(gdpPercap))
-knitr::kable(gdp_time)
+knitr::kable(gdp_time, col.names = c("Continent", "Year", "Min GDP per capita", "Max GDP per capita"))
 ```
 ```{r}
 ggplot(gdp_time, aes(year, maxgdpt, color = continent)) +
@@ -141,8 +141,6 @@ l1 + theme_bw() +
 Life Expectancy of all continents is increasing with the life expectancy of Europe and Oceania show a lower increase rate. 
 
 
-
-
 ## 5. Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy - you decide - a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this bench mark, for each year.
 ```{r}
 summary(gapminder)
@@ -168,10 +166,11 @@ ggplot(ll1, aes(year, country_count)) +
   theme(strip.text = element_text(face="bold")) +
   labs(x="Number of countries", y="Year", title="Amount of countries with low expectancy over time")
 ```
-Many countries in Africa have low life expectancy whereas in Europe, people live over 60 years old since 1970.
+Many countries in Africa have low life expectancy whereas in Europe, people live over 60 years old since 1970. The life expectancy of Oceania is always higher than the set mark.
 
 
 ## 6. Make my own!
+I am interested in examining the change of population between 1952 and 2007.
 ```{r}
 oldworldpop <- gapminder %>%
   filter(year==1952) %>%
@@ -184,24 +183,34 @@ oldpop <- c(237640501, 345152446, 1395357351,418120846,10686006)
 oldcontinent <- c("Africa", "Americas", "Asia", "Europe", "Oceania")
 pie(oldpop, labels=oldcontinent, main="The distribution of world population in 1952")
 ```
+```{r}
+newworldpop <- gapminder %>%
+  filter(year==2007) %>%
+  group_by(continent) %>%
+  summarize(total_popnew= sum(as.numeric(pop)))
 
+knitr::kable(newworldpop, col.names = c("Continent", "Total population"))
 
+newpop <- c(929539692, 898871184, 3811953827,586098529,24549947)
+newcontinent <- c("Africa", "Americas", "Asia", "Europe", "Oceania")
+pie(newpop, labels=newcontinent, main="The distribution of world population in 2007")
+```
+The population of Asia kept growing and population of Europe decreased.
 
 # But I want to do more!
 ```{r}
-library(ggplot2)
-suppressMessages(library(dplyr))
-library("gapminder")
-gtbl <- tbl_df(gapminder)
+table_graph <- tbl_df(gapminder)
+table_graph1 <- table_graph %>%
+  group_by(continent) %>%
+  summarise(meanpop=mean(pop), medianpop=median(pop))
+knitr::kable(table_graph1, col.names = c("Continent", "Mean", "Median"))
+ggplot(table_graph, aes(year, pop)) +
+  facet_wrap(~ continent) +
+  geom_point() +
+  labs(x="Year", y="Population", title ="Change of population over time")
 ```
-```{r results ='asis', echo=FALSE}
-tbl1 <-gtbl %>% group_by(continent) %>% summarise_each(funs(mean,median),gdpPercap)
-knitr::kable(tbl1)
 
-```
-```{r}
-ggplot(gtbl,aes(x=continent,y=gdpPercap, color = continent)) + geom_point() + ggtitle("GDP per cap by continent")
-```
+I tried to explore the layout stretch but I don't think it works.
 
 
 # Report my process
@@ -210,6 +219,8 @@ ggplot(gtbl,aes(x=continent,y=gdpPercap, color = continent)) + geom_point() + gg
 2. There are many different types of graphs that I can make according to what I am looking for. So I tried to include different graphs.
 
 3. When I am doing task 5, after I filtered out low life expectancy data, Oceania data disappears since the life expectancy of Oceania is always higher than the set mark. I am not sure how to keep the graph for Oceania eventhough it is blank.
+
+4. In task 6, I want to generate pie chart but I am not sure how to generate it directly from my data set so I used a dump way to manually enter what I wanted to plot.
 
 
 
