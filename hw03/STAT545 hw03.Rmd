@@ -129,7 +129,7 @@ l1 + theme_bw() +
   labs(x="Year", y="Life Expectancy", title = "Change of Life Expectancy over time")
 
 ```
-Life Expectancy of all continents is increasing with the life expectancy of Europe and Oceania show a slower increase rate. 
+Life Expectancy of all continents is increasing with the life expectancy of Europe and Oceania show a lower increase rate. 
 
 
 
