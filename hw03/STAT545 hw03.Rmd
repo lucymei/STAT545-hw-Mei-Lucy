@@ -109,12 +109,14 @@ This figure displays the distribution of GDP per capita of each continent.
 
 ## 3. Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
 ```{r}
-gapminder %>%
+lifeExpweighted <- gapminder %>%
   filter(continent =="Asia") %>%
   group_by(year) %>%
-  summarize(weighted.mean(lifeExp, pop))
-```
+  summarize(Weightedmean = weighted.mean(lifeExp, pop), Mean = mean(lifeExp))
 
+knitr::kable(lifeExpweighted, col.names = c("Year", "Weighted Mean", "Mean"))
+```
+This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.
 
 
 ## 4. How is life expectancy changing over time on different continents?
