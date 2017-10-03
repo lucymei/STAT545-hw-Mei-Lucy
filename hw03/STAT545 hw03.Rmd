@@ -11,6 +11,7 @@ output:
 ```{r}
 library(gapminder)
 library(tidyverse)
+library(knitr)
 ```
 
 # My mission, high-level
@@ -27,7 +28,7 @@ gdp <- gapminder %>%
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-knitr::kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
+kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
   
 
   ggplot(gdp, aes(continent, max_gdpPercap)) + 
