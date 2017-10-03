@@ -205,7 +205,7 @@ table_graph <- tbl_df(gapminder)
 table_graph1 <- table_graph %>%
   group_by(continent) %>%
   summarise(meanpop=mean(pop), medianpop=median(pop))
-kable(table_graph1, col.names = c("Continent", "Mean", "Median"))
+kable(table_graph1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Mean", "Median"))
 ggplot(table_graph, aes(year, pop)) +
   facet_wrap(~ continent) +
   geom_point() +

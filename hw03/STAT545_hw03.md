@@ -461,18 +461,18 @@ table_graph <- tbl_df(gapminder)
 table_graph1 <- table_graph %>%
   group_by(continent) %>%
   summarise(meanpop=mean(pop), medianpop=median(pop))
-kable(table_graph1, col.names = c("Continent", "Mean", "Median"))
+kable(table_graph1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Mean", "Median"))
 ```
 
 
 
-Continent        Mean     Median
-----------  ---------  ---------
-Africa        9916003    4579311
-Americas     24504795    6227510
-Asia         77038722   14530830
-Europe       17169765    8551125
-Oceania       8874672    6403492
+| Continent |   Mean   |  Median  |
+|:---------:|:--------:|:--------:|
+|  Africa   | 9916003  | 4579311  |
+| Americas  | 24504795 | 6227510  |
+|   Asia    | 77038722 | 14530830 |
+|  Europe   | 17169765 | 8551125  |
+|  Oceania  | 8874672  | 6403492  |
 
 ```r
 ggplot(table_graph, aes(year, pop)) +
