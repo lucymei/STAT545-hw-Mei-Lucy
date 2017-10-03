@@ -20,12 +20,22 @@ library(tidyverse)
 
 # Task menu
 ## 1. Get the maximum and minimum of GDP per capita for all continents.
-```{r results = 'asis'}
-  gdp <- gapminder %>% group_by(continent) %>% summarize(max_gdpPercap=max(gdpPercap), min_gdpPercap=min(gdpPercap))
-  knitr::kable(gdp)
-  ggplot(gdp, aes(continent, max_gdpPercap)) + geom_point(aes(continent, max_gdpPercap,color=continent)) + geom_point(aes(continent, min_gdpPercap, color=continent)) + 
+```{r}
+gdp <- gapminder %>% 
+  group_by(continent) %>% 
+  summarize(max_gdpPercap=max(gdpPercap), 
+            min_gdpPercap=min(gdpPercap))
+
+knitr::kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
+  
+
+  ggplot(gdp, aes(continent, max_gdpPercap)) + 
+    geom_point(aes(continent, max_gdpPercap,color=continent)) +
+    geom_point(aes(continent, min_gdpPercap, color=continent)) + 
     theme_bw() + labs(x="Continent", y="Max and Min GDP per capita", title="The Maximum and Minimum GDP per capita of all Continents")
 ```
+In a larger scale, there is not much difference among the minimum GDP per capita of the continents. However, the maximum GDP per capita of Asia is much more higher than those of other continents. 
+
 
 
 ## 2. Look at the spread of GDP per capita within the continents.
