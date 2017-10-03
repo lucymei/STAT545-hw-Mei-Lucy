@@ -137,7 +137,7 @@ Life Expectancy of all continents is increasing with the life expectancy of Euro
 ```{r}
 summary(gapminder)
 # The low life expectancy is set using mean = 59.47
-library(plyr)
+
 ll1 <- gapminder %>%
   filter(lifeExp < 59.47) %>%
   group_by(continent, year) %>%
