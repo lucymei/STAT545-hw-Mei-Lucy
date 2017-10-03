@@ -28,7 +28,7 @@ gdp <- gapminder %>%
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
+kable(gdp, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
   
 
   ggplot(gdp, aes(continent, max_gdpPercap)) + 

@@ -46,18 +46,18 @@ gdp <- gapminder %>%
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-kable(gdp, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
+kable(gdp, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Maximum GDP per capita", "Minimum GDP per capita"))
 ```
 
 
 
-Continent    Maximum GDP per capita   Minimum GDP per capita
-----------  -----------------------  -----------------------
-Africa                     21951.21                 241.1659
-Americas                   42951.65                1201.6372
-Asia                      113523.13                 331.0000
-Europe                     49357.19                 973.5332
-Oceania                    34435.37               10039.5956
+| Continent | Maximum GDP per capita | Minimum GDP per capita |
+|:---------:|:----------------------:|:----------------------:|
+|  Africa   |        21951.21        |         241.17         |
+| Americas  |        42951.65        |        1201.64         |
+|   Asia    |       113523.13        |         331.00         |
+|  Europe   |        49357.19        |         973.53         |
+|  Oceania  |        34435.37        |        10039.60        |
 
 ```r
   ggplot(gdp, aes(continent, max_gdpPercap)) + 

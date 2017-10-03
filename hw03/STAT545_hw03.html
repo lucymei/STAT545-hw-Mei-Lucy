@@ -156,40 +156,40 @@ library(tidyverse)</code></pre>
   summarize(max_gdpPercap=max(gdpPercap), 
             min_gdpPercap=min(gdpPercap))
 
-kable(gdp, col.names = c(&quot;Continent&quot;, &quot;Maximum GDP per capita&quot;, &quot;Minimum GDP per capita&quot;))</code></pre>
+kable(gdp, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Maximum GDP per capita&quot;, &quot;Minimum GDP per capita&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Maximum GDP per capita</th>
-<th align="right">Minimum GDP per capita</th>
+<th align="center">Continent</th>
+<th align="center">Maximum GDP per capita</th>
+<th align="center">Minimum GDP per capita</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">21951.21</td>
-<td align="right">241.1659</td>
+<td align="center">Africa</td>
+<td align="center">21951.21</td>
+<td align="center">241.17</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">42951.65</td>
-<td align="right">1201.6372</td>
+<td align="center">Americas</td>
+<td align="center">42951.65</td>
+<td align="center">1201.64</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">113523.13</td>
-<td align="right">331.0000</td>
+<td align="center">Asia</td>
+<td align="center">113523.13</td>
+<td align="center">331.00</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">49357.19</td>
-<td align="right">973.5332</td>
+<td align="center">Europe</td>
+<td align="center">49357.19</td>
+<td align="center">973.53</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">34435.37</td>
-<td align="right">10039.5956</td>
+<td align="center">Oceania</td>
+<td align="center">34435.37</td>
+<td align="center">10039.60</td>
 </tr>
 </tbody>
 </table>
