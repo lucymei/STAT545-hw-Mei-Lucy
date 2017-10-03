@@ -171,6 +171,22 @@ ggplot(ll1, aes(year, country_count)) +
 Many countries in Africa have low life expectancy whereas in Europe, people live over 60 years old since 1970.
 
 
+## 6. Make my own!
+```{r}
+oldworldpop <- gapminder %>%
+  filter(year==1952) %>%
+  group_by(continent) %>%
+  summarize(total_pop= sum(pop))
+
+knitr::kable(oldworldpop, col.names = c("Continent", "Total population"))
+
+oldpop <- c(237640501, 345152446, 1395357351,418120846,10686006)
+oldcontinent <- c("Africa", "Americas", "Asia", "Europe", "Oceania")
+pie(oldpop, labels=oldcontinent, main="The distribution of world population in 1952")
+```
+
+
+
 # But I want to do more!
 ```{r}
 library(ggplot2)
