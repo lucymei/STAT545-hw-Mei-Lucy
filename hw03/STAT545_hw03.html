@@ -207,376 +207,376 @@ kable(gdp, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Con
 <pre class="r"><code>gdp_time &lt;- gapminder %&gt;%
   group_by (continent, year) %&gt;%
   summarize(mingdpt = min(gdpPercap), maxgdpt = max(gdpPercap))
-knitr::kable(gdp_time, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Min GDP per capita&quot;, &quot;Max GDP per capita&quot;))</code></pre>
+knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Min GDP per capita&quot;, &quot;Max GDP per capita&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Year</th>
-<th align="right">Min GDP per capita</th>
-<th align="right">Max GDP per capita</th>
+<th align="center">Continent</th>
+<th align="center">Year</th>
+<th align="center">Min GDP per capita</th>
+<th align="center">Max GDP per capita</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1952</td>
-<td align="right">298.8462</td>
-<td align="right">4725.296</td>
+<td align="center">Africa</td>
+<td align="center">1952</td>
+<td align="center">298.85</td>
+<td align="center">4725.30</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1957</td>
-<td align="right">335.9971</td>
-<td align="right">5487.104</td>
+<td align="center">Africa</td>
+<td align="center">1957</td>
+<td align="center">336.00</td>
+<td align="center">5487.10</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1962</td>
-<td align="right">355.2032</td>
-<td align="right">6757.031</td>
+<td align="center">Africa</td>
+<td align="center">1962</td>
+<td align="center">355.20</td>
+<td align="center">6757.03</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1967</td>
-<td align="right">412.9775</td>
-<td align="right">18772.752</td>
+<td align="center">Africa</td>
+<td align="center">1967</td>
+<td align="center">412.98</td>
+<td align="center">18772.75</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1972</td>
-<td align="right">464.0995</td>
-<td align="right">21011.497</td>
+<td align="center">Africa</td>
+<td align="center">1972</td>
+<td align="center">464.10</td>
+<td align="center">21011.50</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1977</td>
-<td align="right">502.3197</td>
-<td align="right">21951.212</td>
+<td align="center">Africa</td>
+<td align="center">1977</td>
+<td align="center">502.32</td>
+<td align="center">21951.21</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1982</td>
-<td align="right">462.2114</td>
-<td align="right">17364.275</td>
+<td align="center">Africa</td>
+<td align="center">1982</td>
+<td align="center">462.21</td>
+<td align="center">17364.28</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1987</td>
-<td align="right">389.8762</td>
-<td align="right">11864.408</td>
+<td align="center">Africa</td>
+<td align="center">1987</td>
+<td align="center">389.88</td>
+<td align="center">11864.41</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1992</td>
-<td align="right">410.8968</td>
-<td align="right">13522.158</td>
+<td align="center">Africa</td>
+<td align="center">1992</td>
+<td align="center">410.90</td>
+<td align="center">13522.16</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1997</td>
-<td align="right">312.1884</td>
-<td align="right">14722.842</td>
+<td align="center">Africa</td>
+<td align="center">1997</td>
+<td align="center">312.19</td>
+<td align="center">14722.84</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">2002</td>
-<td align="right">241.1659</td>
-<td align="right">12521.714</td>
+<td align="center">Africa</td>
+<td align="center">2002</td>
+<td align="center">241.17</td>
+<td align="center">12521.71</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">2007</td>
-<td align="right">277.5519</td>
-<td align="right">13206.485</td>
+<td align="center">Africa</td>
+<td align="center">2007</td>
+<td align="center">277.55</td>
+<td align="center">13206.48</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1952</td>
-<td align="right">1397.7171</td>
-<td align="right">13990.482</td>
+<td align="center">Americas</td>
+<td align="center">1952</td>
+<td align="center">1397.72</td>
+<td align="center">13990.48</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1957</td>
-<td align="right">1544.4030</td>
-<td align="right">14847.127</td>
+<td align="center">Americas</td>
+<td align="center">1957</td>
+<td align="center">1544.40</td>
+<td align="center">14847.13</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1962</td>
-<td align="right">1662.1374</td>
-<td align="right">16173.146</td>
+<td align="center">Americas</td>
+<td align="center">1962</td>
+<td align="center">1662.14</td>
+<td align="center">16173.15</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1967</td>
-<td align="right">1452.0577</td>
-<td align="right">19530.366</td>
+<td align="center">Americas</td>
+<td align="center">1967</td>
+<td align="center">1452.06</td>
+<td align="center">19530.37</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1972</td>
-<td align="right">1654.4569</td>
-<td align="right">21806.036</td>
+<td align="center">Americas</td>
+<td align="center">1972</td>
+<td align="center">1654.46</td>
+<td align="center">21806.04</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1977</td>
-<td align="right">1874.2989</td>
-<td align="right">24072.632</td>
+<td align="center">Americas</td>
+<td align="center">1977</td>
+<td align="center">1874.30</td>
+<td align="center">24072.63</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1982</td>
-<td align="right">2011.1595</td>
-<td align="right">25009.559</td>
+<td align="center">Americas</td>
+<td align="center">1982</td>
+<td align="center">2011.16</td>
+<td align="center">25009.56</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1987</td>
-<td align="right">1823.0160</td>
-<td align="right">29884.350</td>
+<td align="center">Americas</td>
+<td align="center">1987</td>
+<td align="center">1823.02</td>
+<td align="center">29884.35</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1992</td>
-<td align="right">1456.3095</td>
-<td align="right">32003.932</td>
+<td align="center">Americas</td>
+<td align="center">1992</td>
+<td align="center">1456.31</td>
+<td align="center">32003.93</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1997</td>
-<td align="right">1341.7269</td>
-<td align="right">35767.433</td>
+<td align="center">Americas</td>
+<td align="center">1997</td>
+<td align="center">1341.73</td>
+<td align="center">35767.43</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">2002</td>
-<td align="right">1270.3649</td>
-<td align="right">39097.100</td>
+<td align="center">Americas</td>
+<td align="center">2002</td>
+<td align="center">1270.36</td>
+<td align="center">39097.10</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">2007</td>
-<td align="right">1201.6372</td>
-<td align="right">42951.653</td>
+<td align="center">Americas</td>
+<td align="center">2007</td>
+<td align="center">1201.64</td>
+<td align="center">42951.65</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1952</td>
-<td align="right">331.0000</td>
-<td align="right">108382.353</td>
+<td align="center">Asia</td>
+<td align="center">1952</td>
+<td align="center">331.00</td>
+<td align="center">108382.35</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1957</td>
-<td align="right">350.0000</td>
-<td align="right">113523.133</td>
+<td align="center">Asia</td>
+<td align="center">1957</td>
+<td align="center">350.00</td>
+<td align="center">113523.13</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1962</td>
-<td align="right">388.0000</td>
-<td align="right">95458.112</td>
+<td align="center">Asia</td>
+<td align="center">1962</td>
+<td align="center">388.00</td>
+<td align="center">95458.11</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1967</td>
-<td align="right">349.0000</td>
-<td align="right">80894.883</td>
+<td align="center">Asia</td>
+<td align="center">1967</td>
+<td align="center">349.00</td>
+<td align="center">80894.88</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1972</td>
-<td align="right">357.0000</td>
-<td align="right">109347.867</td>
+<td align="center">Asia</td>
+<td align="center">1972</td>
+<td align="center">357.00</td>
+<td align="center">109347.87</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1977</td>
-<td align="right">371.0000</td>
-<td align="right">59265.477</td>
+<td align="center">Asia</td>
+<td align="center">1977</td>
+<td align="center">371.00</td>
+<td align="center">59265.48</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1982</td>
-<td align="right">424.0000</td>
-<td align="right">33693.175</td>
+<td align="center">Asia</td>
+<td align="center">1982</td>
+<td align="center">424.00</td>
+<td align="center">33693.18</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1987</td>
-<td align="right">385.0000</td>
-<td align="right">28118.430</td>
+<td align="center">Asia</td>
+<td align="center">1987</td>
+<td align="center">385.00</td>
+<td align="center">28118.43</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1992</td>
-<td align="right">347.0000</td>
-<td align="right">34932.920</td>
+<td align="center">Asia</td>
+<td align="center">1992</td>
+<td align="center">347.00</td>
+<td align="center">34932.92</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1997</td>
-<td align="right">415.0000</td>
-<td align="right">40300.620</td>
+<td align="center">Asia</td>
+<td align="center">1997</td>
+<td align="center">415.00</td>
+<td align="center">40300.62</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">2002</td>
-<td align="right">611.0000</td>
-<td align="right">36023.105</td>
+<td align="center">Asia</td>
+<td align="center">2002</td>
+<td align="center">611.00</td>
+<td align="center">36023.11</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">2007</td>
-<td align="right">944.0000</td>
-<td align="right">47306.990</td>
+<td align="center">Asia</td>
+<td align="center">2007</td>
+<td align="center">944.00</td>
+<td align="center">47306.99</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1952</td>
-<td align="right">973.5332</td>
-<td align="right">14734.233</td>
+<td align="center">Europe</td>
+<td align="center">1952</td>
+<td align="center">973.53</td>
+<td align="center">14734.23</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1957</td>
-<td align="right">1353.9892</td>
-<td align="right">17909.490</td>
+<td align="center">Europe</td>
+<td align="center">1957</td>
+<td align="center">1353.99</td>
+<td align="center">17909.49</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1962</td>
-<td align="right">1709.6837</td>
-<td align="right">20431.093</td>
+<td align="center">Europe</td>
+<td align="center">1962</td>
+<td align="center">1709.68</td>
+<td align="center">20431.09</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1967</td>
-<td align="right">2172.3524</td>
-<td align="right">22966.144</td>
+<td align="center">Europe</td>
+<td align="center">1967</td>
+<td align="center">2172.35</td>
+<td align="center">22966.14</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1972</td>
-<td align="right">2860.1698</td>
-<td align="right">27195.113</td>
+<td align="center">Europe</td>
+<td align="center">1972</td>
+<td align="center">2860.17</td>
+<td align="center">27195.11</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1977</td>
-<td align="right">3528.4813</td>
-<td align="right">26982.291</td>
+<td align="center">Europe</td>
+<td align="center">1977</td>
+<td align="center">3528.48</td>
+<td align="center">26982.29</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1982</td>
-<td align="right">3630.8807</td>
-<td align="right">28397.715</td>
+<td align="center">Europe</td>
+<td align="center">1982</td>
+<td align="center">3630.88</td>
+<td align="center">28397.72</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1987</td>
-<td align="right">3738.9327</td>
-<td align="right">31540.975</td>
+<td align="center">Europe</td>
+<td align="center">1987</td>
+<td align="center">3738.93</td>
+<td align="center">31540.97</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1992</td>
-<td align="right">2497.4379</td>
-<td align="right">33965.661</td>
+<td align="center">Europe</td>
+<td align="center">1992</td>
+<td align="center">2497.44</td>
+<td align="center">33965.66</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1997</td>
-<td align="right">3193.0546</td>
-<td align="right">41283.164</td>
+<td align="center">Europe</td>
+<td align="center">1997</td>
+<td align="center">3193.05</td>
+<td align="center">41283.16</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">2002</td>
-<td align="right">4604.2117</td>
-<td align="right">44683.975</td>
+<td align="center">Europe</td>
+<td align="center">2002</td>
+<td align="center">4604.21</td>
+<td align="center">44683.98</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">2007</td>
-<td align="right">5937.0295</td>
-<td align="right">49357.190</td>
+<td align="center">Europe</td>
+<td align="center">2007</td>
+<td align="center">5937.03</td>
+<td align="center">49357.19</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">1952</td>
-<td align="right">10039.5956</td>
-<td align="right">10556.576</td>
+<td align="center">Oceania</td>
+<td align="center">1952</td>
+<td align="center">10039.60</td>
+<td align="center">10556.58</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">1957</td>
-<td align="right">10949.6496</td>
-<td align="right">12247.395</td>
+<td align="center">Oceania</td>
+<td align="center">1957</td>
+<td align="center">10949.65</td>
+<td align="center">12247.40</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">1962</td>
-<td align="right">12217.2269</td>
-<td align="right">13175.678</td>
+<td align="center">Oceania</td>
+<td align="center">1962</td>
+<td align="center">12217.23</td>
+<td align="center">13175.68</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">1967</td>
-<td align="right">14463.9189</td>
-<td align="right">14526.125</td>
+<td align="center">Oceania</td>
+<td align="center">1967</td>
+<td align="center">14463.92</td>
+<td align="center">14526.12</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">1972</td>
-<td align="right">16046.0373</td>
-<td align="right">16788.629</td>
+<td align="center">Oceania</td>
+<td align="center">1972</td>
+<td align="center">16046.04</td>
+<td align="center">16788.63</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">1977</td>
-<td align="right">16233.7177</td>
-<td align="right">18334.198</td>
+<td align="center">Oceania</td>
+<td align="center">1977</td>
+<td align="center">16233.72</td>
+<td align="center">18334.20</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">1982</td>
-<td align="right">17632.4104</td>
-<td align="right">19477.009</td>
+<td align="center">Oceania</td>
+<td align="center">1982</td>
+<td align="center">17632.41</td>
+<td align="center">19477.01</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">1987</td>
-<td align="right">19007.1913</td>
-<td align="right">21888.889</td>
+<td align="center">Oceania</td>
+<td align="center">1987</td>
+<td align="center">19007.19</td>
+<td align="center">21888.89</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">1992</td>
-<td align="right">18363.3249</td>
-<td align="right">23424.767</td>
+<td align="center">Oceania</td>
+<td align="center">1992</td>
+<td align="center">18363.32</td>
+<td align="center">23424.77</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">1997</td>
-<td align="right">21050.4138</td>
-<td align="right">26997.937</td>
+<td align="center">Oceania</td>
+<td align="center">1997</td>
+<td align="center">21050.41</td>
+<td align="center">26997.94</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">2002</td>
-<td align="right">23189.8014</td>
-<td align="right">30687.755</td>
+<td align="center">Oceania</td>
+<td align="center">2002</td>
+<td align="center">23189.80</td>
+<td align="center">30687.75</td>
 </tr>
 <tr class="even">
-<td align="left">Oceania</td>
-<td align="right">2007</td>
-<td align="right">25185.0091</td>
-<td align="right">34435.367</td>
+<td align="center">Oceania</td>
+<td align="center">2007</td>
+<td align="center">25185.01</td>
+<td align="center">34435.37</td>
 </tr>
 </tbody>
 </table>
@@ -602,69 +602,62 @@ knitr::kable(gdp_time, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &q
          gdpmean = mean(gdpPercap), 
          gdpvariant = var(gdpPercap), 
          gdpmedian = median(gdpPercap))
-knitr::kable(p1, col.names = c(&quot;Continent&quot;, &quot;Min GDP per cap&quot;, &quot;Max GDP per cap&quot;, &quot;Mean&quot;, &quot;Variant&quot;, &quot;Median&quot;))</code></pre>
+knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Min GDP per cap&quot;, &quot;Max GDP per cap&quot;, &quot;Mean&quot;, &quot;Variant&quot;, &quot;Median&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Min GDP per cap</th>
-<th align="right">Max GDP per cap</th>
-<th align="right">Mean</th>
-<th align="right">Variant</th>
-<th align="right">Median</th>
+<th align="center">Continent</th>
+<th align="center">Min GDP per cap</th>
+<th align="center">Max GDP per cap</th>
+<th align="center">Mean</th>
+<th align="center">Variant</th>
+<th align="center">Median</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">241.1659</td>
-<td align="right">21951.21</td>
-<td align="right">2193.755</td>
-<td align="right">7997187</td>
-<td align="right">1192.138</td>
+<td align="center">Africa</td>
+<td align="center">241.17</td>
+<td align="center">21951.21</td>
+<td align="center">2193.75</td>
+<td align="center">7997187</td>
+<td align="center">1192.14</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1201.6372</td>
-<td align="right">42951.65</td>
-<td align="right">7136.110</td>
-<td align="right">40918591</td>
-<td align="right">5465.510</td>
+<td align="center">Americas</td>
+<td align="center">1201.64</td>
+<td align="center">42951.65</td>
+<td align="center">7136.11</td>
+<td align="center">40918591</td>
+<td align="center">5465.51</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">331.0000</td>
-<td align="right">113523.13</td>
-<td align="right">7902.150</td>
-<td align="right">197272506</td>
-<td align="right">2646.787</td>
+<td align="center">Asia</td>
+<td align="center">331.00</td>
+<td align="center">113523.13</td>
+<td align="center">7902.15</td>
+<td align="center">197272506</td>
+<td align="center">2646.79</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">973.5332</td>
-<td align="right">49357.19</td>
-<td align="right">14469.476</td>
-<td align="right">87520020</td>
-<td align="right">12081.749</td>
+<td align="center">Europe</td>
+<td align="center">973.53</td>
+<td align="center">49357.19</td>
+<td align="center">14469.48</td>
+<td align="center">87520020</td>
+<td align="center">12081.75</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">10039.5956</td>
-<td align="right">34435.37</td>
-<td align="right">18621.609</td>
-<td align="right">40436669</td>
-<td align="right">17983.304</td>
-</tr>
-<tr class="even">
-<td align="left">This is a su</td>
-<td align="right">mmary table with s</td>
-<td align="right">everal variables t</td>
-<td align="right">hat allow us</td>
-<td align="right">to understa</td>
-<td align="right">nd the spread of GDP per capita of each continent.</td>
+<td align="center">Oceania</td>
+<td align="center">10039.60</td>
+<td align="center">34435.37</td>
+<td align="center">18621.61</td>
+<td align="center">40436669</td>
+<td align="center">17983.30</td>
 </tr>
 </tbody>
 </table>
+<p>This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.</p>
 <pre class="r"><code>p2 &lt;- ggplot(gapminder, aes(gdpPercap,lifeExp)) + 
   facet_wrap(~ continent) + 
   geom_point(aes(gdpPercap, lifeExp), color=&quot;skyblue3&quot;, alpha=0.25) +
@@ -687,83 +680,79 @@ p2 +
   group_by(year) %&gt;%
   summarize(Weightedmean = weighted.mean(lifeExp, pop), Mean = mean(lifeExp))
 
-knitr::kable(lifeExpweighted, col.names = c(&quot;Year&quot;, &quot;Weighted Mean&quot;, &quot;Mean&quot;))</code></pre>
+knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Year&quot;, &quot;Weighted Mean&quot;, &quot;Mean&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="right">Year</th>
-<th align="right">Weighted Mean</th>
-<th align="right">Mean</th>
+<th align="center">Year</th>
+<th align="center">Weighted Mean</th>
+<th align="center">Mean</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">1952</td>
-<td align="right">42.94114</td>
-<td align="right">46.31439</td>
+<td align="center">1952</td>
+<td align="center">42.94</td>
+<td align="center">46.31</td>
 </tr>
 <tr class="even">
-<td align="right">1957</td>
-<td align="right">47.28835</td>
-<td align="right">49.31854</td>
+<td align="center">1957</td>
+<td align="center">47.29</td>
+<td align="center">49.32</td>
 </tr>
 <tr class="odd">
-<td align="right">1962</td>
-<td align="right">46.57369</td>
-<td align="right">51.56322</td>
+<td align="center">1962</td>
+<td align="center">46.57</td>
+<td align="center">51.56</td>
 </tr>
 <tr class="even">
-<td align="right">1967</td>
-<td align="right">53.88261</td>
-<td align="right">54.66364</td>
+<td align="center">1967</td>
+<td align="center">53.88</td>
+<td align="center">54.66</td>
 </tr>
 <tr class="odd">
-<td align="right">1972</td>
-<td align="right">57.52159</td>
-<td align="right">57.31927</td>
+<td align="center">1972</td>
+<td align="center">57.52</td>
+<td align="center">57.32</td>
 </tr>
 <tr class="even">
-<td align="right">1977</td>
-<td align="right">59.55648</td>
-<td align="right">59.61056</td>
+<td align="center">1977</td>
+<td align="center">59.56</td>
+<td align="center">59.61</td>
 </tr>
 <tr class="odd">
-<td align="right">1982</td>
-<td align="right">61.57472</td>
-<td align="right">62.61794</td>
+<td align="center">1982</td>
+<td align="center">61.57</td>
+<td align="center">62.62</td>
 </tr>
 <tr class="even">
-<td align="right">1987</td>
-<td align="right">63.53710</td>
-<td align="right">64.85118</td>
+<td align="center">1987</td>
+<td align="center">63.54</td>
+<td align="center">64.85</td>
 </tr>
 <tr class="odd">
-<td align="right">1992</td>
-<td align="right">65.14874</td>
-<td align="right">66.53721</td>
+<td align="center">1992</td>
+<td align="center">65.15</td>
+<td align="center">66.54</td>
 </tr>
 <tr class="even">
-<td align="right">1997</td>
-<td align="right">66.77092</td>
-<td align="right">68.02052</td>
+<td align="center">1997</td>
+<td align="center">66.77</td>
+<td align="center">68.02</td>
 </tr>
 <tr class="odd">
-<td align="right">2002</td>
-<td align="right">68.13732</td>
-<td align="right">69.23388</td>
+<td align="center">2002</td>
+<td align="center">68.14</td>
+<td align="center">69.23</td>
 </tr>
 <tr class="even">
-<td align="right">2007</td>
-<td align="right">69.44386</td>
-<td align="right">70.72848</td>
-</tr>
-<tr class="odd">
-<td align="right">This is</td>
-<td align="right">a table with th</td>
-<td align="right">e mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.</td>
+<td align="center">2007</td>
+<td align="center">69.44</td>
+<td align="center">70.73</td>
 </tr>
 </tbody>
 </table>
+<p>This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.</p>
 <pre class="r"><code>ggplot(lifeExpweighted, aes(year, Mean)) +
   geom_line(aes(year, Weightedmean), color=&quot;blue&quot;) +
   geom_line(aes(year, Mean), color =&quot;red&quot;) +
@@ -806,223 +795,219 @@ l1 + theme_bw() +
   group_by(continent, year) %&gt;%
   summarize(country_count = n())
 
-knitr::kable(ll1, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Number of Countries&quot;))</code></pre>
+knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;Number of Countries&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Year</th>
-<th align="right">Number of Countries</th>
+<th align="center">Continent</th>
+<th align="center">Year</th>
+<th align="center">Number of Countries</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1952</td>
-<td align="right">52</td>
+<td align="center">Africa</td>
+<td align="center">1952</td>
+<td align="center">52</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1957</td>
-<td align="right">52</td>
+<td align="center">Africa</td>
+<td align="center">1957</td>
+<td align="center">52</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1962</td>
-<td align="right">51</td>
+<td align="center">Africa</td>
+<td align="center">1962</td>
+<td align="center">51</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1967</td>
-<td align="right">50</td>
+<td align="center">Africa</td>
+<td align="center">1967</td>
+<td align="center">50</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1972</td>
-<td align="right">50</td>
+<td align="center">Africa</td>
+<td align="center">1972</td>
+<td align="center">50</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1977</td>
-<td align="right">49</td>
+<td align="center">Africa</td>
+<td align="center">1977</td>
+<td align="center">49</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1982</td>
-<td align="right">43</td>
+<td align="center">Africa</td>
+<td align="center">1982</td>
+<td align="center">43</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1987</td>
-<td align="right">39</td>
+<td align="center">Africa</td>
+<td align="center">1987</td>
+<td align="center">39</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">1992</td>
-<td align="right">38</td>
+<td align="center">Africa</td>
+<td align="center">1992</td>
+<td align="center">38</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">1997</td>
-<td align="right">39</td>
+<td align="center">Africa</td>
+<td align="center">1997</td>
+<td align="center">39</td>
 </tr>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">2002</td>
-<td align="right">41</td>
+<td align="center">Africa</td>
+<td align="center">2002</td>
+<td align="center">41</td>
 </tr>
 <tr class="even">
-<td align="left">Africa</td>
-<td align="right">2007</td>
-<td align="right">40</td>
+<td align="center">Africa</td>
+<td align="center">2007</td>
+<td align="center">40</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1952</td>
-<td align="right">19</td>
+<td align="center">Americas</td>
+<td align="center">1952</td>
+<td align="center">19</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1957</td>
-<td align="right">15</td>
+<td align="center">Americas</td>
+<td align="center">1957</td>
+<td align="center">15</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1962</td>
-<td align="right">13</td>
+<td align="center">Americas</td>
+<td align="center">1962</td>
+<td align="center">13</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1967</td>
-<td align="right">10</td>
+<td align="center">Americas</td>
+<td align="center">1967</td>
+<td align="center">10</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1972</td>
-<td align="right">8</td>
+<td align="center">Americas</td>
+<td align="center">1972</td>
+<td align="center">8</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1977</td>
-<td align="right">7</td>
+<td align="center">Americas</td>
+<td align="center">1977</td>
+<td align="center">7</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1982</td>
-<td align="right">5</td>
+<td align="center">Americas</td>
+<td align="center">1982</td>
+<td align="center">5</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1987</td>
-<td align="right">2</td>
+<td align="center">Americas</td>
+<td align="center">1987</td>
+<td align="center">2</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">1992</td>
-<td align="right">1</td>
+<td align="center">Americas</td>
+<td align="center">1992</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">1997</td>
-<td align="right">1</td>
+<td align="center">Americas</td>
+<td align="center">1997</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Americas</td>
-<td align="right">2002</td>
-<td align="right">1</td>
+<td align="center">Americas</td>
+<td align="center">2002</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1952</td>
-<td align="right">29</td>
+<td align="center">Asia</td>
+<td align="center">1952</td>
+<td align="center">29</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1957</td>
-<td align="right">26</td>
+<td align="center">Asia</td>
+<td align="center">1957</td>
+<td align="center">26</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1962</td>
-<td align="right">25</td>
+<td align="center">Asia</td>
+<td align="center">1962</td>
+<td align="center">25</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1967</td>
-<td align="right">23</td>
+<td align="center">Asia</td>
+<td align="center">1967</td>
+<td align="center">23</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1972</td>
-<td align="right">19</td>
+<td align="center">Asia</td>
+<td align="center">1972</td>
+<td align="center">19</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1977</td>
-<td align="right">14</td>
+<td align="center">Asia</td>
+<td align="center">1977</td>
+<td align="center">14</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1982</td>
-<td align="right">11</td>
+<td align="center">Asia</td>
+<td align="center">1982</td>
+<td align="center">11</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1987</td>
-<td align="right">8</td>
+<td align="center">Asia</td>
+<td align="center">1987</td>
+<td align="center">8</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">1992</td>
-<td align="right">7</td>
+<td align="center">Asia</td>
+<td align="center">1992</td>
+<td align="center">7</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1997</td>
-<td align="right">6</td>
+<td align="center">Asia</td>
+<td align="center">1997</td>
+<td align="center">6</td>
 </tr>
 <tr class="even">
-<td align="left">Asia</td>
-<td align="right">2002</td>
-<td align="right">3</td>
+<td align="center">Asia</td>
+<td align="center">2002</td>
+<td align="center">3</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">2007</td>
-<td align="right">1</td>
+<td align="center">Asia</td>
+<td align="center">2007</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1952</td>
-<td align="right">5</td>
+<td align="center">Europe</td>
+<td align="center">1952</td>
+<td align="center">5</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1957</td>
-<td align="right">3</td>
+<td align="center">Europe</td>
+<td align="center">1957</td>
+<td align="center">3</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1962</td>
-<td align="right">1</td>
+<td align="center">Europe</td>
+<td align="center">1962</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Europe</td>
-<td align="right">1967</td>
-<td align="right">1</td>
+<td align="center">Europe</td>
+<td align="center">1967</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">1972</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">This is a ta</td>
-<td align="right">ble cou</td>
-<td align="right">nting the number of countries of each continent with low life expectancy in each recorded year.</td>
+<td align="center">Europe</td>
+<td align="center">1972</td>
+<td align="center">1</td>
 </tr>
 </tbody>
 </table>
+<p>This is a table counting the number of countries of each continent with low life expectancy in each recorded year.</p>
 <pre class="r"><code>ggplot(ll1, aes(year, country_count)) +
   facet_wrap(~ continent) +
   geom_area(fill=&quot;skyblue3&quot;) +
@@ -1039,34 +1024,34 @@ knitr::kable(ll1, col.names = c(&quot;Continent&quot;, &quot;Year&quot;, &quot;N
   group_by(continent) %&gt;%
   summarize(total_pop= sum(pop))
 
-knitr::kable(oldworldpop, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
+knitr::kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Total population</th>
+<th align="center">Continent</th>
+<th align="center">Total population</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">237640501</td>
+<td align="center">Africa</td>
+<td align="center">237640501</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">345152446</td>
+<td align="center">Americas</td>
+<td align="center">345152446</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">1395357351</td>
+<td align="center">Asia</td>
+<td align="center">1395357351</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">418120846</td>
+<td align="center">Europe</td>
+<td align="center">418120846</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">10686006</td>
+<td align="center">Oceania</td>
+<td align="center">10686006</td>
 </tr>
 </tbody>
 </table>
@@ -1079,34 +1064,34 @@ pie(oldpop, labels=oldcontinent, main=&quot;The distribution of world population
   group_by(continent) %&gt;%
   summarize(total_popnew= sum(as.numeric(pop)))
 
-knitr::kable(newworldpop, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
+knitr::kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c(&quot;Continent&quot;, &quot;Total population&quot;))</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Continent</th>
-<th align="right">Total population</th>
+<th align="center">Continent</th>
+<th align="center">Total population</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Africa</td>
-<td align="right">929539692</td>
+<td align="center">Africa</td>
+<td align="center">929539692</td>
 </tr>
 <tr class="even">
-<td align="left">Americas</td>
-<td align="right">898871184</td>
+<td align="center">Americas</td>
+<td align="center">898871184</td>
 </tr>
 <tr class="odd">
-<td align="left">Asia</td>
-<td align="right">3811953827</td>
+<td align="center">Asia</td>
+<td align="center">3811953827</td>
 </tr>
 <tr class="even">
-<td align="left">Europe</td>
-<td align="right">586098529</td>
+<td align="center">Europe</td>
+<td align="center">586098529</td>
 </tr>
 <tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">24549947</td>
+<td align="center">Oceania</td>
+<td align="center">24549947</td>
 </tr>
 </tbody>
 </table>

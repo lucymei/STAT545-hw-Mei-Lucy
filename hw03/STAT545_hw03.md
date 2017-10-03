@@ -87,73 +87,73 @@ Then, I explored a bit of the max and min according to time.
 gdp_time <- gapminder %>%
   group_by (continent, year) %>%
   summarize(mingdpt = min(gdpPercap), maxgdpt = max(gdpPercap))
-knitr::kable(gdp_time, col.names = c("Continent", "Year", "Min GDP per capita", "Max GDP per capita"))
+knitr::kable(gdp_time, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Min GDP per capita", "Max GDP per capita"))
 ```
 
 
 
-Continent    Year   Min GDP per capita   Max GDP per capita
-----------  -----  -------------------  -------------------
-Africa       1952             298.8462             4725.296
-Africa       1957             335.9971             5487.104
-Africa       1962             355.2032             6757.031
-Africa       1967             412.9775            18772.752
-Africa       1972             464.0995            21011.497
-Africa       1977             502.3197            21951.212
-Africa       1982             462.2114            17364.275
-Africa       1987             389.8762            11864.408
-Africa       1992             410.8968            13522.158
-Africa       1997             312.1884            14722.842
-Africa       2002             241.1659            12521.714
-Africa       2007             277.5519            13206.485
-Americas     1952            1397.7171            13990.482
-Americas     1957            1544.4030            14847.127
-Americas     1962            1662.1374            16173.146
-Americas     1967            1452.0577            19530.366
-Americas     1972            1654.4569            21806.036
-Americas     1977            1874.2989            24072.632
-Americas     1982            2011.1595            25009.559
-Americas     1987            1823.0160            29884.350
-Americas     1992            1456.3095            32003.932
-Americas     1997            1341.7269            35767.433
-Americas     2002            1270.3649            39097.100
-Americas     2007            1201.6372            42951.653
-Asia         1952             331.0000           108382.353
-Asia         1957             350.0000           113523.133
-Asia         1962             388.0000            95458.112
-Asia         1967             349.0000            80894.883
-Asia         1972             357.0000           109347.867
-Asia         1977             371.0000            59265.477
-Asia         1982             424.0000            33693.175
-Asia         1987             385.0000            28118.430
-Asia         1992             347.0000            34932.920
-Asia         1997             415.0000            40300.620
-Asia         2002             611.0000            36023.105
-Asia         2007             944.0000            47306.990
-Europe       1952             973.5332            14734.233
-Europe       1957            1353.9892            17909.490
-Europe       1962            1709.6837            20431.093
-Europe       1967            2172.3524            22966.144
-Europe       1972            2860.1698            27195.113
-Europe       1977            3528.4813            26982.291
-Europe       1982            3630.8807            28397.715
-Europe       1987            3738.9327            31540.975
-Europe       1992            2497.4379            33965.661
-Europe       1997            3193.0546            41283.164
-Europe       2002            4604.2117            44683.975
-Europe       2007            5937.0295            49357.190
-Oceania      1952           10039.5956            10556.576
-Oceania      1957           10949.6496            12247.395
-Oceania      1962           12217.2269            13175.678
-Oceania      1967           14463.9189            14526.125
-Oceania      1972           16046.0373            16788.629
-Oceania      1977           16233.7177            18334.198
-Oceania      1982           17632.4104            19477.009
-Oceania      1987           19007.1913            21888.889
-Oceania      1992           18363.3249            23424.767
-Oceania      1997           21050.4138            26997.937
-Oceania      2002           23189.8014            30687.755
-Oceania      2007           25185.0091            34435.367
+| Continent | Year | Min GDP per capita | Max GDP per capita |
+|:---------:|:----:|:------------------:|:------------------:|
+|  Africa   | 1952 |       298.85       |      4725.30       |
+|  Africa   | 1957 |       336.00       |      5487.10       |
+|  Africa   | 1962 |       355.20       |      6757.03       |
+|  Africa   | 1967 |       412.98       |      18772.75      |
+|  Africa   | 1972 |       464.10       |      21011.50      |
+|  Africa   | 1977 |       502.32       |      21951.21      |
+|  Africa   | 1982 |       462.21       |      17364.28      |
+|  Africa   | 1987 |       389.88       |      11864.41      |
+|  Africa   | 1992 |       410.90       |      13522.16      |
+|  Africa   | 1997 |       312.19       |      14722.84      |
+|  Africa   | 2002 |       241.17       |      12521.71      |
+|  Africa   | 2007 |       277.55       |      13206.48      |
+| Americas  | 1952 |      1397.72       |      13990.48      |
+| Americas  | 1957 |      1544.40       |      14847.13      |
+| Americas  | 1962 |      1662.14       |      16173.15      |
+| Americas  | 1967 |      1452.06       |      19530.37      |
+| Americas  | 1972 |      1654.46       |      21806.04      |
+| Americas  | 1977 |      1874.30       |      24072.63      |
+| Americas  | 1982 |      2011.16       |      25009.56      |
+| Americas  | 1987 |      1823.02       |      29884.35      |
+| Americas  | 1992 |      1456.31       |      32003.93      |
+| Americas  | 1997 |      1341.73       |      35767.43      |
+| Americas  | 2002 |      1270.36       |      39097.10      |
+| Americas  | 2007 |      1201.64       |      42951.65      |
+|   Asia    | 1952 |       331.00       |     108382.35      |
+|   Asia    | 1957 |       350.00       |     113523.13      |
+|   Asia    | 1962 |       388.00       |      95458.11      |
+|   Asia    | 1967 |       349.00       |      80894.88      |
+|   Asia    | 1972 |       357.00       |     109347.87      |
+|   Asia    | 1977 |       371.00       |      59265.48      |
+|   Asia    | 1982 |       424.00       |      33693.18      |
+|   Asia    | 1987 |       385.00       |      28118.43      |
+|   Asia    | 1992 |       347.00       |      34932.92      |
+|   Asia    | 1997 |       415.00       |      40300.62      |
+|   Asia    | 2002 |       611.00       |      36023.11      |
+|   Asia    | 2007 |       944.00       |      47306.99      |
+|  Europe   | 1952 |       973.53       |      14734.23      |
+|  Europe   | 1957 |      1353.99       |      17909.49      |
+|  Europe   | 1962 |      1709.68       |      20431.09      |
+|  Europe   | 1967 |      2172.35       |      22966.14      |
+|  Europe   | 1972 |      2860.17       |      27195.11      |
+|  Europe   | 1977 |      3528.48       |      26982.29      |
+|  Europe   | 1982 |      3630.88       |      28397.72      |
+|  Europe   | 1987 |      3738.93       |      31540.97      |
+|  Europe   | 1992 |      2497.44       |      33965.66      |
+|  Europe   | 1997 |      3193.05       |      41283.16      |
+|  Europe   | 2002 |      4604.21       |      44683.98      |
+|  Europe   | 2007 |      5937.03       |      49357.19      |
+|  Oceania  | 1952 |      10039.60      |      10556.58      |
+|  Oceania  | 1957 |      10949.65      |      12247.40      |
+|  Oceania  | 1962 |      12217.23      |      13175.68      |
+|  Oceania  | 1967 |      14463.92      |      14526.12      |
+|  Oceania  | 1972 |      16046.04      |      16788.63      |
+|  Oceania  | 1977 |      16233.72      |      18334.20      |
+|  Oceania  | 1982 |      17632.41      |      19477.01      |
+|  Oceania  | 1987 |      19007.19      |      21888.89      |
+|  Oceania  | 1992 |      18363.32      |      23424.77      |
+|  Oceania  | 1997 |      21050.41      |      26997.94      |
+|  Oceania  | 2002 |      23189.80      |      30687.75      |
+|  Oceania  | 2007 |      25185.01      |      34435.37      |
 
 ```r
 ggplot(gdp_time, aes(year, maxgdpt, color = continent)) +
@@ -194,18 +194,18 @@ p1 <-gapminder %>%
          gdpmean = mean(gdpPercap), 
          gdpvariant = var(gdpPercap), 
          gdpmedian = median(gdpPercap))
-knitr::kable(p1, col.names = c("Continent", "Min GDP per cap", "Max GDP per cap", "Mean", "Variant", "Median"))
+knitr::kable(p1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Min GDP per cap", "Max GDP per cap", "Mean", "Variant", "Median"))
 ```
 
 
 
-Continent    Min GDP per cap   Max GDP per cap        Mean     Variant      Median
-----------  ----------------  ----------------  ----------  ----------  ----------
-Africa              241.1659          21951.21    2193.755     7997187    1192.138
-Americas           1201.6372          42951.65    7136.110    40918591    5465.510
-Asia                331.0000         113523.13    7902.150   197272506    2646.787
-Europe              973.5332          49357.19   14469.476    87520020   12081.749
-Oceania           10039.5956          34435.37   18621.609    40436669   17983.304
+| Continent | Min GDP per cap | Max GDP per cap |   Mean   |  Variant  |  Median  |
+|:---------:|:---------------:|:---------------:|:--------:|:---------:|:--------:|
+|  Africa   |     241.17      |    21951.21     | 2193.75  |  7997187  | 1192.14  |
+| Americas  |     1201.64     |    42951.65     | 7136.11  | 40918591  | 5465.51  |
+|   Asia    |     331.00      |    113523.13    | 7902.15  | 197272506 | 2646.79  |
+|  Europe   |     973.53      |    49357.19     | 14469.48 | 87520020  | 12081.75 |
+|  Oceania  |    10039.60     |    34435.37     | 18621.61 | 40436669  | 17983.30 |
 This is a summary table with several variables that allow us to understand the spread of GDP per capita of each continent.
 
 
@@ -246,25 +246,25 @@ lifeExpweighted <- gapminder %>%
   group_by(year) %>%
   summarize(Weightedmean = weighted.mean(lifeExp, pop), Mean = mean(lifeExp))
 
-knitr::kable(lifeExpweighted, col.names = c("Year", "Weighted Mean", "Mean"))
+knitr::kable(lifeExpweighted, align = 'c', format = 'markdown', digits = 2, col.names = c("Year", "Weighted Mean", "Mean"))
 ```
 
 
 
- Year   Weighted Mean       Mean
------  --------------  ---------
- 1952        42.94114   46.31439
- 1957        47.28835   49.31854
- 1962        46.57369   51.56322
- 1967        53.88261   54.66364
- 1972        57.52159   57.31927
- 1977        59.55648   59.61056
- 1982        61.57472   62.61794
- 1987        63.53710   64.85118
- 1992        65.14874   66.53721
- 1997        66.77092   68.02052
- 2002        68.13732   69.23388
- 2007        69.44386   70.72848
+| Year | Weighted Mean | Mean  |
+|:----:|:-------------:|:-----:|
+| 1952 |     42.94     | 46.31 |
+| 1957 |     47.29     | 49.32 |
+| 1962 |     46.57     | 51.56 |
+| 1967 |     53.88     | 54.66 |
+| 1972 |     57.52     | 57.32 |
+| 1977 |     59.56     | 59.61 |
+| 1982 |     61.57     | 62.62 |
+| 1987 |     63.54     | 64.85 |
+| 1992 |     65.15     | 66.54 |
+| 1997 |     66.77     | 68.02 |
+| 2002 |     68.14     | 69.23 |
+| 2007 |     69.44     | 70.73 |
 This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.
 
 
@@ -332,53 +332,53 @@ ll1 <- gapminder %>%
   group_by(continent, year) %>%
   summarize(country_count = n())
 
-knitr::kable(ll1, col.names = c("Continent", "Year", "Number of Countries"))
+knitr::kable(ll1, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Year", "Number of Countries"))
 ```
 
 
 
-Continent    Year   Number of Countries
-----------  -----  --------------------
-Africa       1952                    52
-Africa       1957                    52
-Africa       1962                    51
-Africa       1967                    50
-Africa       1972                    50
-Africa       1977                    49
-Africa       1982                    43
-Africa       1987                    39
-Africa       1992                    38
-Africa       1997                    39
-Africa       2002                    41
-Africa       2007                    40
-Americas     1952                    19
-Americas     1957                    15
-Americas     1962                    13
-Americas     1967                    10
-Americas     1972                     8
-Americas     1977                     7
-Americas     1982                     5
-Americas     1987                     2
-Americas     1992                     1
-Americas     1997                     1
-Americas     2002                     1
-Asia         1952                    29
-Asia         1957                    26
-Asia         1962                    25
-Asia         1967                    23
-Asia         1972                    19
-Asia         1977                    14
-Asia         1982                    11
-Asia         1987                     8
-Asia         1992                     7
-Asia         1997                     6
-Asia         2002                     3
-Asia         2007                     1
-Europe       1952                     5
-Europe       1957                     3
-Europe       1962                     1
-Europe       1967                     1
-Europe       1972                     1
+| Continent | Year | Number of Countries |
+|:---------:|:----:|:-------------------:|
+|  Africa   | 1952 |         52          |
+|  Africa   | 1957 |         52          |
+|  Africa   | 1962 |         51          |
+|  Africa   | 1967 |         50          |
+|  Africa   | 1972 |         50          |
+|  Africa   | 1977 |         49          |
+|  Africa   | 1982 |         43          |
+|  Africa   | 1987 |         39          |
+|  Africa   | 1992 |         38          |
+|  Africa   | 1997 |         39          |
+|  Africa   | 2002 |         41          |
+|  Africa   | 2007 |         40          |
+| Americas  | 1952 |         19          |
+| Americas  | 1957 |         15          |
+| Americas  | 1962 |         13          |
+| Americas  | 1967 |         10          |
+| Americas  | 1972 |          8          |
+| Americas  | 1977 |          7          |
+| Americas  | 1982 |          5          |
+| Americas  | 1987 |          2          |
+| Americas  | 1992 |          1          |
+| Americas  | 1997 |          1          |
+| Americas  | 2002 |          1          |
+|   Asia    | 1952 |         29          |
+|   Asia    | 1957 |         26          |
+|   Asia    | 1962 |         25          |
+|   Asia    | 1967 |         23          |
+|   Asia    | 1972 |         19          |
+|   Asia    | 1977 |         14          |
+|   Asia    | 1982 |         11          |
+|   Asia    | 1987 |          8          |
+|   Asia    | 1992 |          7          |
+|   Asia    | 1997 |          6          |
+|   Asia    | 2002 |          3          |
+|   Asia    | 2007 |          1          |
+|  Europe   | 1952 |          5          |
+|  Europe   | 1957 |          3          |
+|  Europe   | 1962 |          1          |
+|  Europe   | 1967 |          1          |
+|  Europe   | 1972 |          1          |
 This is a table counting the number of countries of each continent with low life expectancy in each recorded year.
 
 
@@ -404,18 +404,18 @@ oldworldpop <- gapminder %>%
   group_by(continent) %>%
   summarize(total_pop= sum(pop))
 
-knitr::kable(oldworldpop, col.names = c("Continent", "Total population"))
+knitr::kable(oldworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
 ```
 
 
 
-Continent    Total population
-----------  -----------------
-Africa              237640501
-Americas            345152446
-Asia               1395357351
-Europe              418120846
-Oceania              10686006
+| Continent | Total population |
+|:---------:|:----------------:|
+|  Africa   |    237640501     |
+| Americas  |    345152446     |
+|   Asia    |    1395357351    |
+|  Europe   |    418120846     |
+|  Oceania  |     10686006     |
 
 ```r
 oldpop <- c(237640501, 345152446, 1395357351,418120846,10686006)
@@ -431,18 +431,18 @@ newworldpop <- gapminder %>%
   group_by(continent) %>%
   summarize(total_popnew= sum(as.numeric(pop)))
 
-knitr::kable(newworldpop, col.names = c("Continent", "Total population"))
+knitr::kable(newworldpop, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Total population"))
 ```
 
 
 
-Continent    Total population
-----------  -----------------
-Africa              929539692
-Americas            898871184
-Asia               3811953827
-Europe              586098529
-Oceania              24549947
+| Continent | Total population |
+|:---------:|:----------------:|
+|  Africa   |    929539692     |
+| Americas  |    898871184     |
+|   Asia    |    3811953827    |
+|  Europe   |    586098529     |
+|  Oceania  |     24549947     |
 
 ```r
 newpop <- c(929539692, 898871184, 3811953827,586098529,24549947)
