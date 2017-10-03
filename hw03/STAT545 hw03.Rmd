@@ -144,7 +144,7 @@ summary(gapminder)
 ll1 <- gapminder %>%
   filter(lifeExp < 59.47) %>%
   group_by(continent, year) %>%
-  summarize(country_count = n_distinct(country))
+  summarize(country_count = n())
 
 knitr::kable(ll1)
 
