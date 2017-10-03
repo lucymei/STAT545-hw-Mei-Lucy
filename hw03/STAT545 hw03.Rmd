@@ -112,7 +112,7 @@ This figure displays the distribution of GDP per capita of each continent.
 gapminder %>%
   filter(continent =="Asia") %>%
   group_by(year) %>%
-  summarize(weighted.mean(lifeExp, population))
+  summarize(weighted.mean(lifeExp, pop))
 ```
 
 
