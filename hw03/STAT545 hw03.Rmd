@@ -118,9 +118,16 @@ knitr::kable(lifeExpweighted, col.names = c("Year", "Weighted Mean", "Mean"))
 ```
 This is a table with the mean of life expectancy weighted by population and the non-weighted mean is there as a comparison.
 
+```{r}
+ggplot(lifeExpweighted, aes(year, Mean)) +
+  geom_line(aes(year, Weightedmean), color="blue") +
+  geom_line(aes(year, Mean), color ="red") +
+  labs(x="Year", y="Life expectancy", title="Change of life expectancy overtime (Mean and weighted mean)")
+```
+The mean and the population weighted mean of life expectancy varied before 1970. In 1970-1980, they are pretty much the same. From 1980 and after, they showed similar trends. 
+
 
 ## 4. How is life expectancy changing over time on different continents?
-
 
 ```{r}
 l1 <- ggplot(gapminder, aes(year, lifeExp)) + 
@@ -136,7 +143,7 @@ Life Expectancy of all continents is increasing with the life expectancy of Euro
 
 
 
-5. Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy - you decide - a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this bench mark, for each year.
+## 5. Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy - you decide - a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this bench mark, for each year.
 ```{r}
 summary(gapminder)
 # The low life expectancy is set using mean = 59.47
@@ -186,6 +193,7 @@ ggplot(gtbl,aes(x=continent,y=gdpPercap, color = continent)) + geom_point() + gg
 
 2. There are many different types of graphs that I can make according to what I am looking for. So I tried to include different graphs.
 
+3. When I am doing task 5, after I filtered out low life expectancy data, Oceania data disappears since the life expectancy of Oceania is always higher than the set mark. I am not sure how to keep the graph for Oceania eventhough it is blank.
 
 
 
