@@ -25,11 +25,27 @@ library(dplyr)
 Prompts: 
 ## Activity #1
 Make my own cheatsheet similar to Tyler Rinker's minimal guide to tidyr.
-First, get my data.
+### First, get my data.
 ```{r}
-country_lifeExp <- select(gapminder, country, lifeExp)
+country_lifeExp <- gapminder %>%
+  select(country, lifeExp, pop) %>%
+  group_by(country) %>%
+  summarize(mean(lifeExp), mean(pop))
+  
+
 dat <- data.frame(country_lifeExp)
 dat
 ```
 
+### Gather in Action
+```{r}
+dat %>% gather (factor, number, -c(country))
+```
+In this case, we know that number is referred to lifeExp.
+
+### Spread it Back Out
+```{r}
+dat %>% gather(factor, number, -c(country)) %>%
+  spread(factor, number)
+```
 
