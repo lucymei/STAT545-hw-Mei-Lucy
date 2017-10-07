@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+This is homework 04 from Lucy Mei.
+
+
+
+# Choose my own adventure.
+1. Pick one of the data reshaping prompts and do it.
+2. Pick a join prompt and do it.
+
+# General data reshaping and relationship to aggregation.
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+```
+
+Prompts: 
+## Activity #1
+Make my own cheatsheet similar to Tyler Rinker's minimal guide to tidyr.
+First, get my data.
+```{r}
+country_lifeExp <- select(gapminder, country, lifeExp)
+dat <- data.frame(country_lifeExp)
+dat
+```
+
+
