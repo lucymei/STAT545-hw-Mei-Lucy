@@ -30,7 +30,7 @@ Make my own cheatsheet similar to Tyler Rinker's minimal guide to tidyr.
 country_lifeExp <- gapminder %>%
   select(country, lifeExp, pop) %>%
   group_by(country) %>%
-  summarize(mean(lifeExp), mean(pop))
+  summarize(mlifeExp = mean(lifeExp), mpop=mean(pop))
   
 
 dat <- data.frame(country_lifeExp)
@@ -48,4 +48,21 @@ In this case, we know that number is referred to lifeExp.
 dat %>% gather(factor, number, -c(country)) %>%
   spread(factor, number)
 ```
+
+```{r}
+dat %>% gather(factor, number, mlifeExp)
+```
+In this case, only lifeExp is taken out to reshape.
+
+```{r}
+dat %>% gather(factor, number, mlifeExp, mpop)
+```
+
+```{r}
+dat %>% gather(factor, number, -c(country)) %>%
+  spread(country, number)
+```
+This way, the data can create columns according to each country.
+
+## Activity #2
 
