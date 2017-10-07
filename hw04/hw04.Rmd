@@ -64,5 +64,19 @@ dat %>% gather(factor, number, -c(country)) %>%
 ```
 This way, the data can create columns according to each country.
 
-## Activity #2
+## Activity #2 - Make a tibble with one row per year and columns for life expectancy for two or more countries
+```{r}
+coun_life<- gapminder %>%
+  filter(country %in% c("China", "India")) %>%
+  select(year, country,lifeExp) 
+  
+dat2 <- data.frame(coun_life)
+dat2
+```
+```{r}
+dat2 %>% spread (country, lifeExp)
+```
+It took me a while to figure this out. Year can stay the same, and I will type in what columns I want, then put in the corresponding value.
+
+
 
