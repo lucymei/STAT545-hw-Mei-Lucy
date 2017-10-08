@@ -113,4 +113,24 @@ dat32 <- dat31 %>%
   spread(continent, meanle)
 ```
 
+## Activity #4 - In Window functions, we formed a tibble with 24 rows: 2 per year, giving the country with both the lowest and highest life expectancy (in Asia). Take that table and reshape it so you have one row per year or per year * continent combination.
 
+First, I copied the table.
+```{r}
+dat4 <- gapminder %>%
+  select(year, continent, country, lifeExp) %>%
+  group_by(continent, year) %>%
+  filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
+  arrange(year) 
+dat4
+```
+I am not sure if I need to include the country or not. So I made one that is with the country.
+```{r}
+dat41 <- dat4 %>%
+  spread(continent, lifeExp)
+
+knitr::kable(dat41, align = 'c', format = 'markdown', digits = 2)
+
+```
+
+## Activity #5 - Make up a similar set of exercises for myself.
