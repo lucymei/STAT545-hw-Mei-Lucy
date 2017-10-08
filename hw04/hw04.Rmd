@@ -242,6 +242,39 @@ First, I am going to create a second data frame.
 country <- c("Canada", "China", "Japan", "United Kingdom", "Germany", "Finland", "Greece","Hungary", "Belgium")
 area <- c(9985000, 9597000, 377962, 242495, 357376, 338424,131957, 93030, 30528 )
 language <- c("English", "Chinese", "Japanese", "English", "German", "Finnish", "Greek", "Hungarian", "German")
+
+area_language <- data.frame(country, area, language)
+knitr::kable(area_language, align = 'c', format = 'markdown', digits = 2)
+```
+
+To avoid overwhelming data, I am going to filter some countries from gapminder.
+```{r}
+gapminder2 <- gapminder %>%
+  filter(country %in% c("Canada", "China", "Japan", "United Kingdom", "Germany", "Finland", "Greece","Hungary", "Belgium", "America", "India", "Korea", "France", "Italy"))
+
+knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
+```
+
+
+Join area_language to gapminder2.
+Left_join is joined by country, and two more columns are produced, area and language. For countries not in area_language dataset, NA is displaced in this two columns.
+```{r}
+left_join(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+
+```{r}
+semi_join(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+
+semi_join(gapminder2, area_language) %>%
+  filter(country=="America")
+```
+semi_join only joins the common data and exludes countries that are not in area_language dataset.
+
+I want to look at countries that speaks English.
+```{r}
+
 ```
 
 
