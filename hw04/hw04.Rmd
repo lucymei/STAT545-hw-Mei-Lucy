@@ -134,3 +134,25 @@ knitr::kable(dat41, align = 'c', format = 'markdown', digits = 2)
 ```
 
 ## Activity #5 - Make up a similar set of exercises for myself.
+Load the packages.
+```{r}
+library(reshape2)
+library(dplyr)
+```
+
+### Group
+Create a set of data for the exercise. This table summarize the country and year where the population is lower than the global mean.
+```{r}
+dat5 <- gapminder %>%
+  filter(pop < 2.960e+07) %>%
+  select(continent, country, pop, year)
+
+knitr::kable(dat5,align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Population", "Year"))
+
+dat51 <- dat5 %>%
+  group_by(continent, country) %>%
+  summarize(Occurence = n(), Sumofpop=sum(pop))
+knitr::kable(dat51, align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Number of year with low population", "Sum of population"))
+```
+
+
