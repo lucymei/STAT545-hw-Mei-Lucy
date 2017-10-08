@@ -151,8 +151,105 @@ knitr::kable(dat5,align = 'c', format = 'markdown', digits = 2, col.names=c("Con
 
 dat51 <- dat5 %>%
   group_by(continent, country) %>%
-  summarize(Occurence = n(), Sumofpop=sum(pop))
-knitr::kable(dat51, align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Number of year with low population", "Sum of population"))
+  summarize(Occurrence = n(), Sumofpop=sum(pop))
+knitr::kable(dat51, align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Number of years with low population", "Sum of population"))
 ```
+
+### Split
+Turn dat51 into dat52.
+```{r}
+dat52 <- dcast(dat51, continent~country, value.var="Occurrence")
+knitr::kable(dat52, align = 'c', format = 'markdown', digits = 2)
+```
+
+Now, try to use table.
+```{r}
+dat53 <-with(dat5, table(continent, country))
+knitr::kable(dat53, align = 'c', format = 'markdown', digits = 2)
+```
+
+Use dcast to obtain a data.frame.
+```{r}
+dat54 <-dcast(dat5, continent~country, value.var="pop", fun.aggregate = length)
+knitr::kable(dat54, align = 'c', format = 'markdown', digits = 2)
+```
+
+
+### Stack
+Turn dat52 into dat55.
+```{r}
+dat55 <- melt(dat52, id="continent") %>%
+  arrange(continent)
+knitr::kable(dat55, align = 'c', format = 'markdown', digits = 2, col.names = c("Continent", "Country", "Number of years with low population"))
+```
+
+
+### Join
+Create data frames.
+```{r}
+country <- c("Canada", "Finland", "India")
+area <- c(9985000, 338, 3287000)
+New_country <- data.frame(country, area)
+
+Old_country <- gapminder %>%
+  filter(country %in% c("Canada", "Finland", "India"), year>= 1987, year <=2001) %>%
+  select(country, lifeExp)
+
+New_country
+Old_country
+
+
+New_country1 <- data.frame(New_country)
+Old_country1 <- data.frame(Old_country)
+```
+Join by country.
+```{r}
+join_country <- left_join(Old_country1, New_country1)
+knitr::kable(join_country, align = 'c', format = 'markdown', digits = 2)
+```
+
+If use merge
+```{r}
+merge_country <- merge(Old_country1, New_country1)
+knitr::kable(merge_country, align = 'c', format = 'markdown', digits = 2)
+```
+
+### Subset
+To filter out the data I want.
+```{r}
+subset_new_country <- filter(New_country1, country=="Finland")
+knitr::kable(subset_new_country, align = 'c', format = 'markdown', digits = 2)
+```
+
+### Transpose
+```{r}
+New_country1_transpose <- data.frame(t(New_country1))
+knitr::kable(New_country1_transpose, align = 'c', format = 'markdown', digits = 2)
+```
+### Sort
+```{r}
+country_arrange <- arrange(join_country, country, lifeExp, area)
+knitr::kable(country_arrange, align = 'c', format = 'markdown', digits = 2)
+```
+
+
+# Join, merge, look up
+
+## Activity #1 - Create a second data frame, complementary to Gapminder. Join this with Gapminder using a dplyr join function and make some observations about the process and result. Explore the different types of joins.
+
+First, I am going to create a second data frame.
+```{r}
+country <- c("Canada", "China", "Japan", "United Kingdom", "Germany", "Finland", "Greece","Hungary", "Belgium")
+area <- c(9985000, 9597000, 377962, 242495, 357376, 338424,131957, 93030, 30528 )
+language <- c("English", "Chinese", "Japanese", "English", "German", "Finnish", "Greek", "Hungarian", "German")
+```
+
+
+
+
+
+
+
+
 
 
