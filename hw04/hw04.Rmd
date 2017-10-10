@@ -98,22 +98,37 @@ Life expectancy of China is generally higher compare to that of India except the
 
 ## Activity #3 - Compute some measure of life expectancy for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or one row per continent and one variable per year.
 
+First, I am going to generate a table with the selected variables I want.
 ```{r}
 dat3 <- gapminder %>%
   select(continent, lifeExp, year) %>%
-  group_by(continent, year) %>%
+  group_by(year, continent) %>%
   mutate(meanle = mean(lifeExp))
 
 dat31 <- data.frame(
   dat3 %>%
     select(year, continent, meanle))
 
-dat31
+knitr::kable(dat31, align = 'c', format = 'markdown', digits = 2, col.names = c("Year", "Continent", "Mean Life Expectancy"))
 ```
+
+Next, I am going to change it to wide format so I can compare the mean life expectancy between continents for each year.
 ```{r}
 dat32 <- dat31 %>%
-  spread(continent, meanle)
+  reshape2::dcast(year~continent,
+                  value.var="meanle",
+                  fun.aggregate = mean, na.rm=TRUE)
+knitr::kable(dat32, align = 'c', format = 'markdown', digits = 2)
 ```
+If I want to plot this table, I will need to plot each continent one by one. 
+```{r}
+dat32 %>%
+  ggplot(aes(year, Africa)) +
+  geom_point(aes(year, Africa))+
+  geom_point(aes(year, Americas),color="blue") +
+  labs(x="Year", y="Mean life expectancy", title = "Change of mean life expectancy of Africa and Americas over time")
+```
+
 
 ## Activity #4 - In Window functions, we formed a tibble with 24 rows: 2 per year, giving the country with both the lowest and highest life expectancy (in Asia). Take that table and reshape it so you have one row per year or per year * continent combination.
 
