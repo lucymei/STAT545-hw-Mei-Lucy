@@ -69,6 +69,7 @@ dat %>%
 This way, the data can create columns according to each country.
 
 ## Activity #2 - Make a tibble with one row per year and columns for life expectancy for two or more countries
+I want to compare life expectancy between China and India because these two countries are the most populated in Asia. First, I am going to filter out life expectancy from these two countries and make it a new dataframe.
 ```{r}
 coun_life<- gapminder %>%
   filter(country %in% c("China", "India")) %>%
@@ -78,13 +79,13 @@ dat2 <- data.frame(coun_life)
 dat2
 ```
 
-This is a table of life expectancy of China and India of each year.
+This is a table of life expectancy of China and India of each year. I reshaped the data so it is easier to compare the life expectancy between the two countries over time.
 ```{r}
 dat21 <- dat2 %>% 
   spread (country, lifeExp)
 knitr::kable(dat21, align = 'c', format = 'markdown', digits = 2, col.names= c("Year", "China", "India"))
 ```
-It took me a while to figure this out. Year can stay the same, and I will type in what columns I want, then put in the corresponding value.
+
 
 So, let's make a scatterplot. 
 ```{r}
@@ -93,6 +94,7 @@ ggplot(dat21, aes(year, China)) +
   geom_point(aes(year, India), color = "orange") +
   labs(x="Year", y="Life Expectancy", title ="Change of Life Expectancy of China and India Over Time")
 ```
+Life expectancy of China is generally higher compare to that of India except the time around 1960. It is interesting to find out what happened in that year that caused a dramatic drop of life expectancy in China.
 
 ## Activity #3 - Compute some measure of life expectancy for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or one row per continent and one variable per year.
 
@@ -270,12 +272,65 @@ semi_join(gapminder2, area_language) %>%
 semi_join(gapminder2, area_language) %>%
   filter(country=="America")
 ```
-semi_join only joins the common data and exludes countries that are not in area_language dataset.
+semi_join only returns things that are in x with a match in y. I think it functions as if I want to filter things in x according to y but the information in y will not be included.
 
-I want to look at countries that speaks English.
+I want to look at the average population density of European countries each year. 
 ```{r}
+pop_density <- semi_join(gapminder2, area_language) %>%
+  filter(continent == "Europe") %>%
+  mutate(popden = pop/area)
+
+knitr::kable(pop_density, align = 'c', format = 'markdown', digits = 2)
+
+ggplot(pop_density, aes(year, popden)) +
+  geom_point(aes(year, popden, color = country)) +
+  geom_line(aes(year, popden, color = country)) +
+  theme_bw() +
+  labs(x = "Year", y = "Average population density", title = "Change of average population density over time")
 
 ```
+```{r}
+inner_join(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+inner_join returns things in common between the two data frames.
+
+```{r}
+full_join(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+full_join sums up everything.
+
+```{r}
+anti_join(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+anti_join is just the opposite of semi_join.
+
+
+## Activity #3 - Explore the base function merge() and match()
+```{r}
+merge(gapminder2, area_language) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+merge() works very similar to join() function, however, merge() only returns things that are in common. For example, left_join still includes countries that are only in gapminder2 but not area_language.
+
+If we want to make the results of merge() equivalent to that of left_join(), we need add some arguments.
+I found the trick from [here](http://zevross.com/blog/2014/04/30/mini-post-for-large-tables-in-r-dplyrs-function-inner_join-is-much-faster-than-merge/).
+```{r}
+merge(gapminder2, area_language, all.x=TRUE, all.y=FALSE) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+Indeed, it gives the same table.
+I think join() has more diveristy that it has more ways of how we want to join the two datasets compare to merge().
+
+Now, let's explore match().
+```{r}
+a <- knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
+b <- knitr::kable(area_language, align = 'c', format = 'markdown', digits = 2)
+match(a,b)
+```
+match() returns a vector of the positions of the matched item from both datasets.
 
 
 
