@@ -38,12 +38,13 @@ knitr::kable(dat, align = 'c', format = 'markdown', digits = 2)
 ```
 
 ### Gather in Action
+In this case, we know that number is referred to lifeExp.
 ```{r}
 dat %>% 
   gather (factor, number, -c(country)) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
-In this case, we know that number is referred to lifeExp.
+
 
 ### Spread it Back Out
 Then I am going to restore the table back to the long format.
@@ -69,14 +70,16 @@ dat %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 
+
+This way, the data can create columns according to each country.
 ```{r}
 dat %>% 
   gather(factor, number, -c(country)) %>%
   spread(country, number) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
-
 ```
-This way, the data can create columns according to each country.
+
+
 
 ## Activity #2 - Make a tibble with one row per year and columns for life expectancy for two or more countries
 I want to compare life expectancy between China and India because these two countries are the most populated in Asia. First, I am going to filter out life expectancy from these two countries and make it a new dataframe.
@@ -123,6 +126,8 @@ knitr::kable(dat31, align = 'c', format = 'markdown', digits = 2, col.names = c(
 ```
 
 Next, I am going to change it to wide format so I can compare the mean life expectancy between continents for each year.
+
+If I want to plot this table, I will need to plot each continent one by one.
 ```{r}
 dat32 <- dat31 %>%
   reshape2::dcast(year~continent,
@@ -130,7 +135,7 @@ dat32 <- dat31 %>%
                   fun.aggregate = mean, na.rm=TRUE)
 knitr::kable(dat32, align = 'c', format = 'markdown', digits = 2)
 ```
-If I want to plot this table, I will need to plot each continent one by one. 
+ 
 ```{r}
 dat32 %>%
   ggplot(aes(year, Africa)) +
@@ -143,6 +148,7 @@ dat32 %>%
 ## Activity #4 - In Window functions, we formed a tibble with 24 rows: 2 per year, giving the country with both the lowest and highest life expectancy (in Asia). Take that table and reshape it so you have one row per year or per year * continent combination.
 
 First, I copied the table.
+I am not sure if I need to include the country or not. So I made one that is with the country.
 ```{r}
 dat4 <- gapminder %>%
   select(year, continent, country, lifeExp) %>%
@@ -151,7 +157,8 @@ dat4 <- gapminder %>%
   arrange(year) 
 knitr::kable(dat4, align = 'c', format = 'markdown', digits = 2)
 ```
-I am not sure if I need to include the country or not. So I made one that is with the country.
+
+
 ```{r}
 dat41 <- dat4 %>%
   spread(continent, lifeExp)
@@ -293,15 +300,12 @@ left_join(gapminder2, area_language) %>%
 ```{r}
 semi_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
-
-semi_join(gapminder2, area_language) %>%
-  filter(country=="America")
 ```
 semi_join only returns things that are in x with a match in y. I think it functions as if I want to filter things in x according to y but the information in y will not be included.
 
-I want to look at the average population density of European countries each year. 
+I want to look at the average population density of European countries each year. Here, I used inner_join because inner_join returns things in common between the two data frames.
 ```{r}
-pop_density <- semi_join(gapminder2, area_language) %>%
+pop_density <- inner_join(gapminder2, area_language) %>%
   filter(continent == "Europe") %>%
   mutate(popden = pop/area)
 
@@ -314,11 +318,8 @@ ggplot(pop_density, aes(year, popden)) +
   labs(x = "Year", y = "Average population density", title = "Change of average population density over time")
 
 ```
-```{r}
-inner_join(gapminder2, area_language) %>%
-  knitr::kable(align = 'c', format = 'markdown', digits = 2)
-```
-inner_join returns things in common between the two data frames.
+
+
 
 ```{r}
 full_join(gapminder2, area_language) %>%
@@ -349,13 +350,24 @@ merge(gapminder2, area_language, all.x=TRUE, all.y=FALSE) %>%
 Indeed, it gives the same table.
 I think join() has more diveristy that it has more ways of how we want to join the two datasets compare to merge().
 
+
+
+
 Now, let's explore match().
 ```{r}
 a <- knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
 b <- knitr::kable(area_language, align = 'c', format = 'markdown', digits = 2)
 match(a,b)
 ```
-match() returns a vector of the positions of the matched item from both datasets.
+match() returns a vector of the positions of the matched item from both datasets. I think it is very different from join() functions since match works with vectors only. 
+
+So one thing I think match() function can do is that, I can extact a column from dataset2, and then put it into dataset1. Here, I extracted *language* column from area_language, then I put it into *pop* in gapminder2, and this is the resulting table I have.
+```{r}
+gapminder2$pop <- area_language$language[match(gapminder2$country, area_language$country)]
+
+knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
+```
+
 
 
 
