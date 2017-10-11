@@ -13,6 +13,6 @@ If you want to check out the folder, it is [here](https://github.com/lucymei/STA
 
 If you want to check out the folder, it is [here](https://github.com/lucymei/STAT545-hw-Mei-Lucy/tree/master/hw03)
 
-[Homework04 is here - Explore join() functions] (https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw04/hw04.md)
+[Homework04 is here - Explore join() functions](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw04/hw04.md)
 
 If you want to check out the folder, it is [here](https://github.com/lucymei/STAT545-hw-Mei-Lucy/tree/master/hw04)
