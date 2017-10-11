@@ -34,37 +34,47 @@ country_lifeExp <- gapminder %>%
   
 
 dat <- data.frame(country_lifeExp)
-dat
+knitr::kable(dat, align = 'c', format = 'markdown', digits = 2)
 ```
 
 ### Gather in Action
 ```{r}
 dat %>% 
-  gather (factor, number, -c(country))
+  gather (factor, number, -c(country)) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 In this case, we know that number is referred to lifeExp.
 
 ### Spread it Back Out
+Then I am going to restore the table back to the long format.
 ```{r}
 dat %>% 
   gather(factor, number, -c(country)) %>%
-  spread(factor, number)
+  spread(factor, number) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 
+
+
+I am going to generate a table that only lifeExp is taken out to reshape
 ```{r}
-dat %>% gather(factor, number, mlifeExp)
+dat %>% 
+  gather(factor, number, mlifeExp) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
-In this case, only lifeExp is taken out to reshape.
 
 ```{r}
 dat %>% 
-  gather(factor, number, mlifeExp, mpop)
+  gather(factor, number, mlifeExp, mpop) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 
 ```{r}
 dat %>% 
   gather(factor, number, -c(country)) %>%
-  spread(country, number)
+  spread(country, number) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+
 ```
 This way, the data can create columns according to each country.
 
@@ -76,7 +86,7 @@ coun_life<- gapminder %>%
   select(year, country,lifeExp) 
   
 dat2 <- data.frame(coun_life)
-dat2
+knitr::kable(dat2, align = 'c', format = 'markdown', digits = 2)
 ```
 
 This is a table of life expectancy of China and India of each year. I reshaped the data so it is easier to compare the life expectancy between the two countries over time.
@@ -139,7 +149,7 @@ dat4 <- gapminder %>%
   group_by(continent, year) %>%
   filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
   arrange(year) 
-dat4
+knitr::kable(dat4, align = 'c', format = 'markdown', digits = 2)
 ```
 I am not sure if I need to include the country or not. So I made one that is with the country.
 ```{r}
