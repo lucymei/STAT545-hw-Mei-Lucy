@@ -320,18 +320,20 @@ ggplot(pop_density, aes(year, popden)) +
 ```
 
 
-
+full_join sums up everything.
 ```{r}
 full_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
-full_join sums up everything.
 
+
+
+anti_join is just the opposite of semi_join.
 ```{r}
 anti_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
-anti_join is just the opposite of semi_join.
+
 
 
 ## Activity #3 - Explore the base function merge() and match()
@@ -347,6 +349,9 @@ I found the trick from [here](http://zevross.com/blog/2014/04/30/mini-post-for-l
 merge(gapminder2, area_language, all.x=TRUE, all.y=FALSE) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
+
+
+
 Indeed, it gives the same table.
 I think join() has more diveristy that it has more ways of how we want to join the two datasets compare to merge().
 
