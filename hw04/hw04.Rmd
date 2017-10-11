@@ -346,6 +346,9 @@ anti_join(gapminder2, area_language) %>%
 merge(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
+
+
+
 merge() works very similar to join() function, however, merge() only returns things that are in common. For example, left_join still includes countries that are only in gapminder2 but not area_language.
 
 If we want to make the results of merge() equivalent to that of left_join(), we need add some arguments.
