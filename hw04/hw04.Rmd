@@ -301,6 +301,11 @@ left_join(gapminder2, area_language) %>%
 semi_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
+
+
+
+
+
 semi_join only returns things that are in x with a match in y. I think it functions as if I want to filter things in x according to y but the information in y will not be included.
 
 I want to look at the average population density of European countries each year. Here, I used inner_join because inner_join returns things in common between the two data frames.
