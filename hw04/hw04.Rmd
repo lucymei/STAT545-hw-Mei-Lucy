@@ -244,13 +244,15 @@ Old_country
 New_country1 <- data.frame(New_country)
 Old_country1 <- data.frame(Old_country)
 ```
-Join by country.
+
+
+### Join by country.
 ```{r}
 join_country <- left_join(Old_country1, New_country1)
 knitr::kable(join_country, align = 'c', format = 'markdown', digits = 2)
 ```
 
-If use merge
+### If use merge
 ```{r}
 merge_country <- merge(Old_country1, New_country1)
 knitr::kable(merge_country, align = 'c', format = 'markdown', digits = 2)
@@ -299,12 +301,13 @@ knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
 
 
 Join area_language to gapminder2.
-Left_join is joined by country, and two more columns are produced, area and language. For countries not in area_language dataset, NA is displaced in this two columns.
+### Left_join is joined by country, and two more columns are produced, area and language. For countries not in area_language dataset, NA is displaced in this two columns.
 ```{r}
 left_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 
+### semi_join only returns things that are in x with a match in y. I think it functions as if I want to filter things in x according to y but the information in y will not be included.
 ```{r}
 semi_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
@@ -312,10 +315,7 @@ semi_join(gapminder2, area_language) %>%
 
 
 
-
-
-semi_join only returns things that are in x with a match in y. I think it functions as if I want to filter things in x according to y but the information in y will not be included.
-
+### Explore using a plot
 I want to look at the average population density of European countries each year. Here, I used inner_join because inner_join returns things in common between the two data frames.
 ```{r}
 pop_density <- inner_join(gapminder2, area_language) %>%
@@ -333,7 +333,7 @@ ggplot(pop_density, aes(year, popden)) +
 ```
 
 
-full_join sums up everything.
+### full_join sums up everything.
 ```{r}
 full_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
@@ -341,7 +341,7 @@ full_join(gapminder2, area_language) %>%
 
 
 
-anti_join is just the opposite of semi_join.
+### anti_join is just the opposite of semi_join.
 ```{r}
 anti_join(gapminder2, area_language) %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
