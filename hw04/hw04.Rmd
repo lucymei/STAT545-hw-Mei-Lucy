@@ -6,7 +6,7 @@ output:
 ---
 
 This is homework 04 from Lucy Mei.
-
+I made some "cheatsheets"" to practice so there are many tables in my homework.
 
 
 # Choose my own adventure.
@@ -175,19 +175,27 @@ library(dplyr)
 ```
 
 ### Group
-Create a set of data for the exercise. This table summarize the country and year where the population is lower than the global mean.
+Create a set of data for the exercise. This table summarize the country and year where the population is lower than the global mean before 1980.
 ```{r}
 dat5 <- gapminder %>%
-  filter(pop < 2.960e+07) %>%
+  filter(pop < 2.960e+07, year < 1980) %>%
   select(continent, country, pop, year)
 
 knitr::kable(dat5,align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Population", "Year"))
+```
 
+
+
+
+Then I calculated how many years of these countries have a low population.
+```{r}
 dat51 <- dat5 %>%
   group_by(continent, country) %>%
   summarize(Occurrence = n(), Sumofpop=sum(pop))
 knitr::kable(dat51, align = 'c', format = 'markdown', digits = 2, col.names=c("Continent", "Country", "Number of years with low population", "Sum of population"))
 ```
+
+
 
 ### Split
 Turn dat51 into dat52.
@@ -384,7 +392,14 @@ knitr::kable(gapminder2, align = 'c', format = 'markdown', digits = 2)
 
 
 
+# Report my progress
+- It took me a while to figure things out, like how to manipulate the data frames.
 
+- reshape2 definitely helps a lot when there are duplicated values.
+
+- match() is a very tricky function and I need to explore a bit. I think match() is also useful for searching through dataset.
+
+- I thin it is a good habit to check things in the joined table using filter, just to make sure I have the right things.
 
 
 
