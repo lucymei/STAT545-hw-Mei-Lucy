@@ -7,3 +7,5 @@ output:
 
 This is homework 05 from Lucy Mei.
 
+# Homework05: Factor and figure management; Repo hygiene
+
