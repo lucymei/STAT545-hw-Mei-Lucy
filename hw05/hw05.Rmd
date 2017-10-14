@@ -84,14 +84,33 @@ nlevels(gdpPercap_1952$country)
 gdpPercap_2007 <- gdpPercap_2007 %>%
   droplevels()
 nlevels(gdpPercap_2007$country)
-
 ```
 Good, so both data I want only have 30 levels.
+Let's make a plot first.
+```{r}
+gdpPercap_1952 %>%
+  ggplot(aes(gdpPercap, country)) + 
+  geom_point(aes(gdpPercap, country)) +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+
+gdpPercap_2007 %>%
+  ggplot(aes(gdpPercap, country)) + 
+  geom_point(aes(gdpPercap, country)) +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 2007")
+```
+The plots do not give useful information.
 
 Now, I am going to reorder the levels according to maximum GDP per capita.
 ```{r}
-forcats::fct_reorder(gdpPercap_1952$country, gdpPercap_1952$gdpPercap, max) %>%
-  levels()
+gdpPercap_1952 %>%
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap)) + 
+  geom_point() +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+
+gdpPercap_2007 %>%
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap)) + 
+  geom_point() +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 2007")
 ```
 
 
