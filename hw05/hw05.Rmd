@@ -18,3 +18,22 @@ This is homework 05 from Lucy Mei.
 4. Write some data to file and load it back into R. e.g. save a plot to file and include it in a R markdown report via ![Alt text](/path/to/img.png).
 
 5. Organize my github, to celebrate the completion of STAT 545.
+
+## For this homework I am going to use gapminder
+```{r}
+library(gapminder)
+library(tidyverse)
+```
+
+## Factor management
+Step goals: 
+- Define factor variables;
+- Drop factor / levels;
+- Reorder levels based on knowledge from data
+
+### Drop Oceania
+1. Filter the Gapminder data to remove observations associated with the continent of Oceania.
+```{r}
+
+```
+
