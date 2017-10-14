@@ -115,4 +115,34 @@ gdpPercap_2007 %>%
 The plots are now arranged according to GDP per capita. From these two plots it is easy to tell that Norway and Switzerland had high GDP per capita in both 1952 and 2007. GDP per capita in Europe increased in general from 1952 to 2007.
 
 
+If I look at the continent.
+```{r}
+gdpPercap_continent1952 <- gapminder %>%
+  filter(year == 1952)
+gdpPercap_continent1952 <- gdpPercap_continent1952 %>%
+  droplevels()
+
+gdpPercap_continent2007 <- gapminder %>%
+  filter(year == 2007)
+gdpPercap_continent2007 <- gdpPercap_continent2007 %>%
+  droplevels()
+```
+And I reorder the level according to maximum GDP per capita of the continent.
+```{r}
+gdpPercap_continent1952 %>%
+  ggplot(aes(forcats::fct_reorder(continent, gdpPercap, max),gdpPercap)) +
+  geom_point() +
+  labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 1952")
+
+gdpPercap_continent2007 %>%
+  ggplot(aes(forcats::fct_reorder(continent, gdpPercap, max), gdpPercap)) + 
+  geom_point() +
+  labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 2007")
+```
+
+
+### Common part
+Characterize the (derived) data before and after your factor re-leveling.
+- Explore the effects of arrange(). Does merely arranging the data have any effect on a figure?
+- Explore the effects of reordering a factor and factor reordering coupled with arrange(). Especially, what effect does this have on a figure?
 
