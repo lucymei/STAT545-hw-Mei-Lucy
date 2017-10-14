@@ -31,9 +31,70 @@ Step goals:
 - Drop factor / levels;
 - Reorder levels based on knowledge from data
 
-### Drop Oceania
-1. Filter the Gapminder data to remove observations associated with the continent of Oceania.
+### Drop Oceania.
+First, I am going to check the number of rows in gapminder.
 ```{r}
+nrow(gapminder)
+```
+
+1. Filter the Gapminder data to remove observations associated with the continent of Oceania and check how many rows are left.
+```{r}
+gapfiltered <- gapminder %>%
+  filter(continent %in% c("Asia", "Americas", "Europe", "Africa"))
+nrow(gapfiltered)
+```
+
+2. Additionally, remove unused factor levels. 
+First, let's look at the levels of the gapfiltered (filtered out Oceania).
+```{r}
+nlevels(gapfiltered$continent)
+```
+Although I filtered Oceania in the first step, when we look at the level of continent, there are still 5 levels.
+
+Now, I am going to remove the level using the base function droplevels().
+```{r}
+gapfiltered_dropped <- gapfiltered %>%
+  droplevels()
+nlevels(gapfiltered_dropped$continent)
+nrow(gapfiltered_dropped)
+```
+After dropping the level, there are only 4 levels in continent. The number of rows is the same before and after dropping the unused level.
+
+
+### Reorder the levels of country or continent.
+In this section, I am interested in looking at the maximum GDP per capita of Europe countries in 1952 amd 2007.
+First, I will need to filter out the data I want.
+```{r}
+gdpPercap_1952 <- gapminder %>%
+  filter(continent == "Europe", year == 1952)
+levels(gdpPercap_1952$country)
+
+gdpPercap_2007 <- gapminder %>%
+  filter(continent == "Europe", year ==2007)
+levels(gdpPercap_2007$country)
+```
+Since I only filtered the data, when I look at the level of countries, it still shows total of 142 levels.
+
+So I am going to drop the unused levels now.
+```{r}
+gdpPercap_1952 <- gdpPercap_1952 %>%
+  droplevels()
+nlevels(gdpPercap_1952$country)
+
+gdpPercap_2007 <- gdpPercap_2007 %>%
+  droplevels()
+nlevels(gdpPercap_2007$country)
 
 ```
+Good, so both data I want only have 30 levels.
+
+Now, I am going to reorder the levels according to maximum GDP per capita.
+```{r}
+forcats::fct_reorder(gdpPercap_1952$country, gdpPercap_1952$gdpPercap, max) %>%
+  levels()
+```
+
+
+
+
 
