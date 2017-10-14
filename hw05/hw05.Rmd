@@ -67,11 +67,11 @@ First, I will need to filter out the data I want.
 ```{r}
 gdpPercap_1952 <- gapminder %>%
   filter(continent == "Europe", year == 1952)
-levels(gdpPercap_1952$country)
+nlevels(gdpPercap_1952$country)
 
 gdpPercap_2007 <- gapminder %>%
   filter(continent == "Europe", year ==2007)
-levels(gdpPercap_2007$country)
+nlevels(gdpPercap_2007$country)
 ```
 Since I only filtered the data, when I look at the level of countries, it still shows total of 142 levels.
 
@@ -103,17 +103,16 @@ The plots do not give useful information.
 Now, I am going to reorder the levels according to maximum GDP per capita.
 ```{r}
 gdpPercap_1952 %>%
-  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap)) + 
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
   geom_point() +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
 
 gdpPercap_2007 %>%
-  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap)) + 
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
   geom_point() +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 2007")
 ```
-
-
+The plots are now arranged according to GDP per capita. From these two plots it is easy to tell that Norway and Switzerland had high GDP per capita in both 1952 and 2007. GDP per capita in Europe increased in general from 1952 to 2007.
 
 
 
