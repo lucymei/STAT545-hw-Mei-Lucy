@@ -49,6 +49,10 @@ If you want to check out the folder, it is [here](https://github.com/lucymei/STA
 
 
 # Notes and Exercises
+All the notes in class can be found [here](https://github.com/lucymei/STAT545-Notes-and-Exercises).
 
+
+# My experience
+Although I am in science, I don't have a strong stat background. Before I attended this class, I knew nothing about R. I only learned Python during my undergrad. At first, I prefer Python because I think coding of Python is more user-friendly and I can play many tricks. As I learn more about R, I understand why R is more widely used for data analysis and manipulations. Knowing how to use R is definitely an asset for my future study.
 
 ![I have learnt how to use R](https://media.giphy.com/media/8UF0EXzsc0Ckg/giphy.gif)
