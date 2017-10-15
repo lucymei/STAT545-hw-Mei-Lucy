@@ -1,0 +1,12 @@
+---
+title: "hw01_gapminder"
+output: github_document
+---
+library(gapminder)
+
+str(gapminder)
+
+head(gapminder)
+tail(gapminder)
+
+summary(gapminder)
