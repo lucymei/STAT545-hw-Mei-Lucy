@@ -1,5 +1,7 @@
 # STAT545-hw-Mei-Lucy
 
+The main course page of STAT545 is [here](http://stat545.com/index.html).
+
 Finally, the last homework from STAT545!
 ![Yes!!](https://media.tenor.com/images/8f2ab13b52287edb3c656dd76aa24025/tenor.gif)
 
