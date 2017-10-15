@@ -1,0 +1,3 @@
+
+# This is the repository for STAT545 hw02.
+[Here](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw02/STAT545_hw02.md) is the link to the markdown file.
