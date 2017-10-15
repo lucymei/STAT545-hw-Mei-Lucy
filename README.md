@@ -50,6 +50,17 @@ If you want to check out the folder, it is [here](https://github.com/lucymei/STA
 
 # Notes and Exercises
 All the notes in class can be found [here](https://github.com/lucymei/STAT545-Notes-and-Exercises).
+[cm004 - R Markdown test drive](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm004sample.md)
+[cm005 - Care and feeding of data frames or “tibbles”](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm005_Notes_and_Exercises.md)
+[cm006 - First look at dplyr, %>%, and ggplot2](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm006_Notes_and_Exercises.md)
+[cm007 - ggplot2](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm007_notes_and_exercises.md)
+[cm008 - Modelling in R; More dplyr, ggplot2](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm008_Notes_and_Exercises.md)
+[cm009 - Tidy data, reshaping](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm009_Notes_and_Exercises.md)
+[cm010 - dplyr joins, minimum “need to know” re: R as a programming language](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm010%20Notes%20and%20Exercises.Rmd)
+[cm011 - R as a programming language, getting data out of R (and back in)](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm011%20Notes%20and%20Exercises.Rmd)
+[cm012 - Be the boss of your factors, getting data out of R (and back in)](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm012%20Notes%20and%20Exercises.Rmd)
+[cm013 - Revisit ggplot, practicalities of daily figure-making]
+[cm014 - Visualization Analysis and Design: Tamara Munzer guest lecture]
 
 
 # My experience
