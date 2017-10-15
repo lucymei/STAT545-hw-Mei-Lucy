@@ -114,7 +114,7 @@ gdpPercap_2007 %>%
 ```
 The plots are now arranged according to GDP per capita. From these two plots it is easy to tell that Norway and Switzerland had high GDP per capita in both 1952 and 2007. GDP per capita in Europe increased in general from 1952 to 2007.
 
-
+*Need to fix this*
 If I look at the continent.
 ```{r}
 gdpPercap_continent1952 <- gapminder %>%
@@ -144,5 +144,85 @@ gdpPercap_continent2007 %>%
 ### Common part
 Characterize the (derived) data before and after your factor re-leveling.
 - Explore the effects of arrange(). Does merely arranging the data have any effect on a figure?
+
+If I arrange gapminder data of Europe in 1950 according to GDP per capita and then plot. The plot is not in the arranged order. However, the table generated is arranged according to ascending gdpPercap.
+```{r}
+gdpPercap_1952 %>%
+  arrange(gdpPercap) %>%
+  ggplot(aes(gdpPercap,country)) +
+  geom_point() +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+
+gdpPercap_1952 %>%
+  arrange(gdpPercap) %>%
+  knitr::kable(align = 'c', format = 'markdown', digits = 2)
+```
+
+*Need to fix this*
 - Explore the effects of reordering a factor and factor reordering coupled with arrange(). Especially, what effect does this have on a figure?
+If I reorder the level according to GDP per capita and plot the same thing as the previous plot.
+```{r}
+gdpPercap_1952 %>%
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
+  geom_point() +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+```
+As shown before, it gives a new ordered plot.
+
+If I use a combination of reordering and arrange(). For example, what if I arrange the data according to life expectancy first and then I plot it using reordering according to gdpPercap. It shows that arrange() has not effect on the plot.
+```{r}
+gdpPercap_1952 %>%
+  arrange(lifeExp) %>%
+  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
+  geom_point() +
+  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+```
+
+## File I/O
+Experiment with one or more of write_csv()/read_csv() (and/or TSV friends), saveRDS()/readRDS(), dput()/dget(). 
+Create something new, probably by filtering or grouped-summarization of Gapminder.
+Incorporate factor levels.
+
+First, I load gapminder data and turn country and continent to factors for later manipulation.
+```{r}
+(gap_tsv <- system.file("gapminder.tsv", package = "gapminder"))
+gapminder <- read_tsv(gap_tsv)
+str(gapminder, give.attr=FALSE)
+gapminderfactor <- gapminder %>%
+  mutate(country = factor(country),
+         continent = factor(continent))
+str(gapminderfactor)
+```
+
+*How to reorder and then keep the reorder in the data*
+I am going to create a new dataset of gapminder data of Asia from 2001 to 2007 and reorder the level of country according to population.
+```{r}
+gap_asia2000 <- gapminderfactor %>%
+  filter(continent=="Asia", year > 2000) %>%
+  droplevels()
+forcats::fct_reorder(gap_asia2000$country, gap_asia2000$pop, max)
+levels(gap_asia2000$country)
+data.frame(gap_asia2000)
+
+```
+
+Now, I am going to write the data.
+```{r}
+write_csv(gap_asia2000, "gap_asia2000.csv")
+```
+
+And read it again.
+```{r}
+read_csv("gap_asia2000.csv")
+levels(gap_asia2000$country)
+```
+
+## Visualization design
+Remake at least one figure or create a new one, in light of something I learned in the recent class meetings about visualization design and color. 
+Juxtapose the first attempt and what I obtained after some time spent working on it.
+Reflect on the differences. 
+
+## Writing figures to file
+Use ggsave() to explicitly save a plot to file.
+Then use ![Alt text](/path/to/img.png) to load and embed it in my report. 
 
