@@ -62,7 +62,7 @@ After dropping the level, there are only 4 levels in continent. The number of ro
 
 
 ### Reorder the levels of country or continent.
-In this section, I am interested in looking at the maximum GDP per capita of Europe countries in 1952 amd 2007.
+In this section, I am interested in looking at the maximum GDP per capita of Europe countries in 1959 and 2007.
 First, I will need to filter out the data I want.
 ```{r}
 gdpPercap_1952 <- gapminder %>%
@@ -70,7 +70,7 @@ gdpPercap_1952 <- gapminder %>%
 nlevels(gdpPercap_1952$country)
 
 gdpPercap_2007 <- gapminder %>%
-  filter(continent == "Europe", year ==2007)
+  filter(continent == "Europe", year == 2007)
 nlevels(gdpPercap_2007$country)
 ```
 Since I only filtered the data, when I look at the level of countries, it still shows total of 142 levels.
@@ -85,17 +85,21 @@ gdpPercap_2007 <- gdpPercap_2007 %>%
   droplevels()
 nlevels(gdpPercap_2007$country)
 ```
-Good, so both data I want only have 30 levels.
-Let's make a plot first.
+Good, so the data I want only has 30 levels now.
+Let's make a plot for maximum GDP per capita first.
+
+
 ```{r}
 gdpPercap_1952 %>%
-  ggplot(aes(gdpPercap, country)) + 
-  geom_point(aes(gdpPercap, country)) +
+  group_by(country) %>%
+  ggplot(aes(gdpPercap,country)) + 
+  geom_point(aes((gdpPercap), country)) +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
 
 gdpPercap_2007 %>%
-  ggplot(aes(gdpPercap, country)) + 
-  geom_point(aes(gdpPercap, country)) +
+  group_by(country) %>%
+  ggplot(aes(gdpPercap,country)) + 
+  geom_point(aes((gdpPercap), country)) +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 2007")
 ```
 The plots do not give useful information.
@@ -114,29 +118,45 @@ gdpPercap_2007 %>%
 ```
 The plots are now arranged according to GDP per capita. From these two plots it is easy to tell that Norway and Switzerland had high GDP per capita in both 1952 and 2007. GDP per capita in Europe increased in general from 1952 to 2007.
 
-*Need to fix this*
+### Look at continent 
 If I look at the continent.
 ```{r}
 gdpPercap_continent1952 <- gapminder %>%
-  filter(year == 1952)
-gdpPercap_continent1952 <- gdpPercap_continent1952 %>%
+  filter(year == 1952) %>%
   droplevels()
+levels(gdpPercap_continent1952$continent)
 
 gdpPercap_continent2007 <- gapminder %>%
-  filter(year == 2007)
-gdpPercap_continent2007 <- gdpPercap_continent2007 %>%
+  filter(year == 2007) %>%
   droplevels()
+levels(gdpPercap_continent2007$continent)
 ```
-And I reorder the level according to maximum GDP per capita of the continent.
+
+```{r}
+gdpPercap_continent1952 %>%
+  ggplot(aes(continent,gdpPercap)) +
+  geom_point(aes(continent,gdpPercap)) +
+  labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 1952")
+
+gdpPercap_continent2007 %>%
+  ggplot(aes(continent, gdpPercap)) + 
+  geom_point(aes(continent, gdpPercap)) +
+  labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 2007")
+```
+
+
+
+
+And I reorder the level according to maximum GDP per capita of the continent. We can tell that GDP per capita of Europe is generallly higher than that of Africa.
 ```{r}
 gdpPercap_continent1952 %>%
   ggplot(aes(forcats::fct_reorder(continent, gdpPercap, max),gdpPercap)) +
-  geom_point() +
+  geom_point(aes(forcats::fct_reorder(continent, gdpPercap, max),gdpPercap)) +
   labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 1952")
 
 gdpPercap_continent2007 %>%
   ggplot(aes(forcats::fct_reorder(continent, gdpPercap, max), gdpPercap)) + 
-  geom_point() +
+  geom_point(aes(forcats::fct_reorder(continent, gdpPercap, max), gdpPercap)) +
   labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 2007")
 ```
 
