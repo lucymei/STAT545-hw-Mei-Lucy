@@ -178,25 +178,44 @@ gdpPercap_1952 %>%
   knitr::kable(align = 'c', format = 'markdown', digits = 2)
 ```
 
-*Need to fix this*
+
 - Explore the effects of reordering a factor and factor reordering coupled with arrange(). Especially, what effect does this have on a figure?
 If I reorder the level according to GDP per capita and plot the same thing as the previous plot.
 ```{r}
-gdpPercap_1952 %>%
-  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
+gdpPercap_1952reorder <- gdpPercap_1952 %>%
+  mutate(country = forcats::fct_reorder(country,gdpPercap))
+  
+ggplot(gdpPercap_1952reorder, aes(gdpPercap, country)) + 
   geom_point() +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+
+ggplot(gdpPercap_1952reorder, aes(lifeExp, country)) +
+  geom_point() +
+  labs(x="Life Expectancy", y="Country", title = "Life Expectancy of European countries in 1952")
 ```
 As shown before, it gives a new ordered plot.
 
-If I use a combination of reordering and arrange(). For example, what if I arrange the data according to life expectancy first and then I plot it using reordering according to gdpPercap. It shows that arrange() has not effect on the plot.
+If I use a combination of reordering and arrange(). For example, what if I arrange the reordered data according to life expectancy first and then I plot it. It shows that arrange() has no effect on the plot. The third plot shows life expectancy in order as a comparison.
 ```{r}
-gdpPercap_1952 %>%
+gdpPercap_1952reorder %>%
   arrange(lifeExp) %>%
-  ggplot(aes(gdpPercap, forcats::fct_reorder(country, gdpPercap))) + 
+  ggplot(aes(gdpPercap,country)) + 
   geom_point() +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
+
+gdpPercap_1952reorder %>%
+  arrange(lifeExp) %>%
+  ggplot(aes(lifeExp,country)) + 
+  geom_point() +
+  labs(x="Life Expectancy", y="Country", title = "Life Expectancy of European countries in 1952")
+
+gdpPercap_1952reorder %>%
+  ggplot(aes(lifeExp, forcats::fct_reorder(country, lifeExp))) + 
+  geom_point() +
+  labs(x="Life Expectancy", y="Country", title = "Life Expectancy of European countries in 1952")
 ```
+
+
 
 ## File I/O
 Experiment with one or more of write_csv()/read_csv() (and/or TSV friends), saveRDS()/readRDS(), dput()/dget(). 
@@ -214,27 +233,37 @@ gapminderfactor <- gapminder %>%
 str(gapminderfactor)
 ```
 
+```{r}
+nlevels(gapminderfactor$country)
+```
+
 *How to reorder and then keep the reorder in the data*
 I am going to create a new dataset of gapminder data of Asia from 2001 to 2007 and reorder the level of country according to population.
+First, I filtered out the data I want and check the levels of country.
 ```{r}
 gap_asia2000 <- gapminderfactor %>%
   filter(continent=="Asia", year > 2000) %>%
   droplevels()
-forcats::fct_reorder(gap_asia2000$country, gap_asia2000$pop, max)
 levels(gap_asia2000$country)
-data.frame(gap_asia2000)
+```
 
+Then, I created a reordered set of data according to population.
+```{r}
+gap_asia2000reorder <- gap_asia2000 %>%
+  mutate(country= forcats::fct_reorder(gap_asia2000$country, gap_asia2000$pop, max))
+levels(gap_asia2000reorder$country)
 ```
 
 Now, I am going to write the data.
 ```{r}
-write_csv(gap_asia2000, "gap_asia2000.csv")
+data.frame(gap_asia2000reorder)
+write_csv(gap_asia2000reorder, "gap_asia2000reorder.csv")
 ```
 
-And read it again.
+And read it again. It seems that the reordered data is kept in its reordered form.
 ```{r}
-read_csv("gap_asia2000.csv")
-levels(gap_asia2000$country)
+read_csv("gap_asia2000reorder.csv")
+levels(gap_asia2000reorder$country)
 ```
 
 ## Visualization design
