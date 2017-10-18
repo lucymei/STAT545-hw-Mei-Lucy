@@ -237,7 +237,6 @@ str(gapminderfactor)
 nlevels(gapminderfactor$country)
 ```
 
-*How to reorder and then keep the reorder in the data*
 I am going to create a new dataset of gapminder data of Asia from 2001 to 2007 and reorder the level of country according to population.
 First, I filtered out the data I want and check the levels of country.
 ```{r}
@@ -271,7 +270,96 @@ Remake at least one figure or create a new one, in light of something I learned 
 Juxtapose the first attempt and what I obtained after some time spent working on it.
 Reflect on the differences. 
 
+### First plot I want to improve
+I want to plot change of mean life expectancy of the continent overtime. First, I created a new column for mean life expectancy of each continent.
+```{r}
+meanlifeExp <- gapminder %>%
+  group_by(year,continent) %>%
+  mutate(meanle = mean(lifeExp))
+meanlifeExp
+```
+
+Then, I plot it as I would before.
+```{r}
+meanlifeExp %>%
+  ggplot(aes(x=year, y=meanle)) +
+  geom_point(aes(x=year, y=meanle, color=continent)) +
+  labs(x="Year", y="Mean Life Expectancy", title="Change of mean life expectancy overtime")
+```
+
+Now, I try to improve the plot. I used a new set of colours. From this plot, I can not only see the trend of each continent but also to compare the mean life expectancy between continents for each year. 
+```{r}
+library(RColorBrewer)
+my_plot <- ggplot(meanlifeExp, aes(x=year, y=meanle)) +
+  geom_bar(aes(x=year, y=meanle, fill=continent),position="dodge", stat="identity") +
+  scale_fill_manual(values=brewer.pal(n=5, "Set2")) +
+  scale_y_continuous("Mean Life Expectancy") +
+  scale_x_continuous("Year") +
+  labs(title="Change of mean life expectancy overtime")
+my_plot
+```
+
+### Low life expectancy plot
+
+Another plot I want to try. I want to know the proportion of countries that have a life expectancy lower than the global median life expectancy.  
+
+First, this is how I would do before. I would add a y-intercept line to indicate boundary.
+```{r}
+gapminder %>%
+  ggplot(aes(year, lifeExp)) +
+  geom_point(aes(x=year, y=lifeExp)) +
+  facet_wrap(~continent) +
+  geom_hline(yintercept=60.71, colour="red") +
+  labs(x="Year", y="Life Expectancy", title="Life Expectancy overtime")
+```
+
+
+Now, I can plot the following. The colour change gives a more straightforward indication of the amount of countries have low life expectancy compare to the first plot. Also the legend gives a brief explanation to the colours. However, I think y-intercept gives a better sense of how life expectancy deviates from the mean value. For example, from the first plot, I can tell the life expectancy of Oceania is way above the mean. 
+```{r}
+colour_layer <- scale_colour_manual("Life expectancy",
+                                    labels=c("High Life Expectancy", "Low Life Expectancy"),
+                                    values=c("black", "blue"))
+lowlifeplot <- gapminder %>%
+  ggplot(aes(year, lifeExp)) +
+  geom_point(aes(x=year, y=lifeExp, colour = lifeExp <60.71)) +
+  colour_layer +
+  scale_alpha_discrete(range=c(0.2, 1), guide=FALSE) +
+  facet_wrap(~continent) +
+  labs(x="Year", y="Life Expectancy", title="Life Expectancy overtime")
+
+lowlifeplot
+```
+
 ## Writing figures to file
 Use ggsave() to explicitly save a plot to file.
 Then use ![Alt text](/path/to/img.png) to load and embed it in my report. 
+
+First, I want to combine the two plots together.
+```{r}
+library(gridExtra)
+combined_plot <- grid.arrange(my_plot, lowlifeplot, nrow=2)
+```
+
+
+So now I want to save the two life expectancy plots in a file.
+```{r}
+ggsave("combined_plot.pdf", combined_plot)
+ggsave("combined_plot.png", combined_plot)
+```
+
+Then, I load my plots.
+```{r}
+![Life expectancy plots](hw05/combined_plot.png)
+```
+
+
+```{r}
+
+```
+
+# But I want to do more!
+Make a deeper exploration of the forcats packages, i.e. try more of the factor level reordering functions.
+Pick a handful of countries, each of which you can associate with a stereotypical animal. Create an excerpt of the Gapminder data, filtered to just these countries.
+Create a new factor by mapping the existing country factor levels to the new levels.
+
 
