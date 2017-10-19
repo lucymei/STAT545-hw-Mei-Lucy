@@ -15,7 +15,7 @@ This is homework 05 from Lucy Mei.
 
 3. Implement visualization design principles.
 
-4. Write some data to file and load it back into R. e.g. save a plot to file and include it in a R markdown report via ![Alt text](/path/to/img.png).
+4. Write some data to file and load it back into R. e.g. save a plot to file and include it in a R markdown report via `![Alt text](/path/to/img.png)`.
 
 5. Organize my github, to celebrate the completion of STAT 545.
 
@@ -332,7 +332,7 @@ lowlifeplot
 
 ## Writing figures to file
 Use ggsave() to explicitly save a plot to file.
-Then use ![Alt text](/path/to/img.png) to load and embed it in my report. 
+Then use `![Alt text](/path/to/img.png)` to load and embed it in my report. 
 
 First, I want to combine the two plots together.
 ```{r}
@@ -343,7 +343,6 @@ combined_plot <- grid.arrange(my_plot, lowlifeplot, nrow=2)
 
 So now I want to save the two life expectancy plots in a file.
 ```{r}
-ggsave("combined_plot.pdf", combined_plot)
 ggsave("combined_plot.png", combined_plot)
 ```
 
@@ -357,8 +356,6 @@ Then, I load my plots.
 Make a deeper exploration of the forcats packages, i.e. try more of the factor level reordering functions.
 Pick a handful of countries, each of which you can associate with a stereotypical animal. Create an excerpt of the Gapminder data, filtered to just these countries.
 Create a new factor by mapping the existing country factor levels to the new levels.
-```{r}
 
-```
 
 
