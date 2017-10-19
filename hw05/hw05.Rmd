@@ -348,18 +348,17 @@ ggsave("combined_plot.png", combined_plot)
 ```
 
 Then, I load my plots.
-```{r}
-![Life expectancy plots](hw05/combined_plot.png)
-```
+
+![Life_expectancy_plots](combined_plot.png)
 
 
-```{r}
-
-```
 
 # But I want to do more!
 Make a deeper exploration of the forcats packages, i.e. try more of the factor level reordering functions.
 Pick a handful of countries, each of which you can associate with a stereotypical animal. Create an excerpt of the Gapminder data, filtered to just these countries.
 Create a new factor by mapping the existing country factor levels to the new levels.
+```{r}
+
+```
 
 
