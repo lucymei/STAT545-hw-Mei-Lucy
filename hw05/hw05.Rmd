@@ -144,6 +144,7 @@ gdpPercap_continent2007 %>%
   labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 2007")
 ```
 
+The plot is not in order now.
 
 
 
@@ -159,7 +160,7 @@ gdpPercap_continent2007 %>%
   geom_point(aes(forcats::fct_reorder(continent, gdpPercap, max), gdpPercap)) +
   labs(x="Continent", y="GDP per capita", title = "GDP per capita of continents in 2007")
 ```
-
+Now we can clearly see that Europe has the highest GDP per capita whereas Africa has the lowest.
 
 ### Common part
 Characterize the (derived) data before and after your factor re-leveling.
@@ -188,21 +189,11 @@ gdpPercap_1952reorder <- gdpPercap_1952 %>%
 ggplot(gdpPercap_1952reorder, aes(gdpPercap, country)) + 
   geom_point() +
   labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
-
-ggplot(gdpPercap_1952reorder, aes(lifeExp, country)) +
-  geom_point() +
-  labs(x="Life Expectancy", y="Country", title = "Life Expectancy of European countries in 1952")
 ```
 As shown before, it gives a new ordered plot.
 
-If I use a combination of reordering and arrange(). For example, what if I arrange the reordered data according to life expectancy first and then I plot it. It shows that arrange() has no effect on the plot. The third plot shows life expectancy in order as a comparison.
+If I use a combination of reordering and arrange(). For example, what if I arrange the reordered data according to life expectancy first and then I plot it life expectancy vs year. It shows that arrange() has no effect on the plot. Instead, when I reordered the level of country according to life expectancy, now the plot is ordered.
 ```{r}
-gdpPercap_1952reorder %>%
-  arrange(lifeExp) %>%
-  ggplot(aes(gdpPercap,country)) + 
-  geom_point() +
-  labs(x="GDP per capita", y="Country", title = "GDP per capita of European countries in 1952")
-
 gdpPercap_1952reorder %>%
   arrange(lifeExp) %>%
   ggplot(aes(lifeExp,country)) + 
@@ -356,6 +347,10 @@ Then, I load my plots.
 Make a deeper exploration of the forcats packages, i.e. try more of the factor level reordering functions.
 Pick a handful of countries, each of which you can associate with a stereotypical animal. Create an excerpt of the Gapminder data, filtered to just these countries.
 Create a new factor by mapping the existing country factor levels to the new levels.
+```{r}
+country <- c("Belgium", "Canada", "China", "Finland")
+national_animal <- c("Lion", "Beaver", "Panda", "Brown bear")
+```
 
 
 
