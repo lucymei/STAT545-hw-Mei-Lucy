@@ -1,9 +1,4 @@
----
-title: "Homework 05"
-output: 
-  html_document: 
-    keep_md: yes
----
+# Homework 05
 
 This is the link for [homework 05](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw05/hw05.md). 
 
