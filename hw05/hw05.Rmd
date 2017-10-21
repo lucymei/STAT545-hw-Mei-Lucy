@@ -321,6 +321,23 @@ lowlifeplot <- gapminder %>%
 lowlifeplot
 ```
 
+
+### Visualization trick from guest lecture
+Sometimes derived data can be more significant and people seem to be more sensitive to length change, I am going to plot the number of countries that have low life expectancy each year in a bar plot.
+```{r}
+numcountry_lowlife<- gapminder %>%
+  filter(lifeExp < 60.71) %>%
+  group_by(continent) %>%
+  ggplot(aes(x=year, y=distinct(country))) +
+  geom_bar(aes(x=year, y=distinct(country), fill=continent),position="dodge") +
+  scale_fill_manual(values=brewer.pal(n=5, "Set2")) +
+  scale_y_continuous("Number of countries with low life expectancy") +
+  scale_x_continuous("Year") +
+  labs(title="Change of number of low life expectancy overtime")
+numcountry_lowlife
+```
+
+
 ## Writing figures to file
 Use ggsave() to explicitly save a plot to file.
 Then use `![Alt text](/path/to/img.png)` to load and embed it in my report. 
