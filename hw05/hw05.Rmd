@@ -250,6 +250,8 @@ compare_levels <- compare_levels %>%
 compare_levels
 ```
 ![Europe_gdp_percap.csv](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw05/Europe_gdp_percap.csv)
+
+
 ![Europe_gdp_percap.rds](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw05/Europe_gdp_percap.rds)
 
 
@@ -352,8 +354,6 @@ So now I want to save the two life expectancy plots in a file.
 ```{r}
 ggsave("combined_plot.png", combined_plot)
 ```
-![combined_plot.png](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw05/combined_plot.png)
-Then, I load my plots.
 
 ![Life_expectancy_plots](combined_plot.png)
 
