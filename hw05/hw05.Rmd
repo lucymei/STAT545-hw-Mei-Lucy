@@ -292,7 +292,7 @@ my_plot
 
 ### Low life expectancy plot
 
-Another plot I want to try. I want to know the proportion of countries that have a life expectancy lower than the global median life expectancy.  
+Another plot I want to try. In hw03, I explored low life expectancy already. I want to know the proportion of countries that have a life expectancy lower than the global median life expectancy.  
 
 First, this is how I would do before. I would add a y-intercept line to indicate boundary.
 ```{r}
@@ -324,13 +324,15 @@ lowlifeplot
 
 ### Visualization trick from guest lecture
 Sometimes derived data can be more significant and people seem to be more sensitive to length change, I am going to plot the number of countries that have low life expectancy each year in a bar plot.
+This plot gives another view to present the number of countries with low life expectancy. It is very clear that the life expectancy of Oceania is always above average. 
 ```{r}
+library(RColorBrewer)
 numcountry_lowlife<- gapminder %>%
   filter(lifeExp < 60.71) %>%
   group_by(continent) %>%
-  ggplot(aes(x=year, y=distinct(country))) +
-  geom_bar(aes(x=year, y=distinct(country), fill=continent),position="dodge") +
-  scale_fill_manual(values=brewer.pal(n=5, "Set2")) +
+  ggplot(aes(year)) +
+  geom_bar(aes(x=year, fill=continent),position="dodge") +
+  scale_fill_manual(values=brewer.pal(n=5, "Set3")) +
   scale_y_continuous("Number of countries with low life expectancy") +
   scale_x_continuous("Year") +
   labs(title="Change of number of low life expectancy overtime")
