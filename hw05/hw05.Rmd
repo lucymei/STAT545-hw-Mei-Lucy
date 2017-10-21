@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Homework 05"
 output: 
   html_document: 
     keep_md: yes
@@ -347,7 +347,7 @@ Then use `![Alt text](/path/to/img.png)` to load and embed it in my report.
 First, I want to combine the two plots together.
 ```{r}
 library(gridExtra)
-combined_plot <- grid.arrange(my_plot, lowlifeplot, nrow=2)
+combined_plot <- grid.arrange(my_plot, lowlifeplot, numcountry_lowlife, nrow=2)
 ```
 
 
@@ -366,10 +366,51 @@ Then, I load my plots.
 Make a deeper exploration of the forcats packages, i.e. try more of the factor level reordering functions.
 Pick a handful of countries, each of which you can associate with a stereotypical animal. Create an excerpt of the Gapminder data, filtered to just these countries.
 Create a new factor by mapping the existing country factor levels to the new levels.
+1. First, I created a new data frame called country_animal.
 ```{r}
-country <- c("Belgium", "Canada", "China", "Finland")
-national_animal <- c("Lion", "Beaver", "Panda", "Brown bear")
+country <- c("Belgium", "Canada", "China", "Finland", "France", "Germany", "Greece", "Poland")
+national_animal <- c("Lion", "Beaver", "Panda", "Brown bear", "Gallic rooster", "Eagle", "Dolphins", "European bison")
+country_animal <- data.frame(country, national_animal)
+
+```
+2. Then, I checked the level of the national animal in this data frame, which is alphabetical.
+```{r}
+country_animal$national_animal %>% 
+  levels()
+```
+I reordered them according to how I want it to be.
+```{r}
+country_animal <- country_animal %>%
+  mutate(national_animal= forcats::fct_relevel(national_animal, "Dolphins", "Panda"))
+levels(country_animal$national_animal)
 ```
 
+3. Filtered gapminder data and drop unused levels.
+```{r}
+filtered_country <- gapminder %>%
+  filter(country %in% c("Belgium", "Canada", "China", "Finland", "France", "Germany", "Greece", "Poland")) %>%
+  droplevels()
+levels(filtered_country$country)
+```
+
+4. I then join the data.
+```{r}
+gapnational <- left_join(filtered_country, country_animal)
+gapnational %>%
+  filter(year==2007)
+```
+
+Then I am stuck here. I am not sure how to map the existing country factor levels to the new levels. 
+
+## Report my progress
+1. I think reordering the level is definitely very helpful when comes to plotting since `arrange()` does not do the ordering in ggplot.
+
+2. Also I think it is very useful to combine the plots in one figure but I am not sure if I can scale individual plot within that page. For example, I know the size of the figure I want but within the figure I want to manipulate the sizes of individual plots.
+
+3. Another question I want to ask is that for the visualization section, the plot Change of number of low life expectancy overtime. For `geom_bar` plot, when there is no value for Oceania, I notice the bars for Africa for 2007 (the very last year) become wider since there are only two continents. Is there a way to make the bars as a fixed size so they don't change sizes?
+
+4. It is very interesting to explore visualization of the plots. Especially after the guest lecture, I think more before I make plots.
+
+5. For the additional question at the very last. I tried to search online but most of the tutorials only talk about how to reorder factor levels according to numeric values. I am not sure if I understand the question correctly. I think the question wants us to map one factor levels to a new level order of a second factor. I don't know how to do that.
 
 
