@@ -47,7 +47,14 @@ If you want to check out the folder, it is [here](https://github.com/lucymei/STA
 
 
 
-[Homework05 is here - Factor and figure management]
+[Homework05 is here - Factor and figure management](https://github.com/lucymei/STAT545-hw-Mei-Lucy/blob/master/hw05/hw05.md)
+- Reorder a factor
+- Improve a figure
+- Visualization design principles
+- Write data to file and load it back into R
+
+If you want to check out the folder, it is [here](https://github.com/lucymei/STAT545-hw-Mei-Lucy/tree/master/hw05)
+
 
 
 # Notes and Exercises
@@ -87,11 +94,11 @@ All the notes in class can be found [here](https://github.com/lucymei/STAT545-No
 
 
 
-[cm013 - Revisit ggplot, practicalities of daily figure-making]
+[cm013 - Revisit ggplot, practicalities of daily figure-making](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm013_Notes_and_Exercises.md)
 
 
 
-[cm014 - Visualization Analysis and Design: Tamara Munzer guest lecture]
+[cm014 - Visualization Analysis and Design: Tamara Munzer guest lecture](https://github.com/lucymei/STAT545-Notes-and-Exercises/blob/master/cm014_Guest_Lecture_Notes.md)
 
 
 # My experience
