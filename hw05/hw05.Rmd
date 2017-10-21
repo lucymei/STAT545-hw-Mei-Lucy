@@ -192,7 +192,7 @@ ggplot(gdpPercap_1952reorder, aes(gdpPercap, country)) +
 ```
 As shown before, it gives a new ordered plot.
 
-If I use a combination of reordering and arrange(). For example, what if I arrange the reordered data according to life expectancy first and then I plot it life expectancy vs year. It shows that arrange() has no effect on the plot. Instead, when I reordered the level of country according to life expectancy, now the plot is ordered.
+If I use a combination of reordering and arrange(). For example, what if I arrange the reordered data according to life expectancy first and then I plot it life expectancy vs year. It shows that arrange() has no effect on the plot. 
 ```{r}
 gdpPercap_1952reorder %>%
   arrange(lifeExp) %>%
@@ -205,7 +205,7 @@ gdpPercap_1952reorder %>%
   geom_point() +
   labs(x="Life Expectancy", y="Country", title = "Life Expectancy of European countries in 1952")
 ```
-
+Instead, when I reordered the level of country according to life expectancy, now the plot is ordered.
 
 
 ## File I/O
@@ -213,48 +213,43 @@ Experiment with one or more of write_csv()/read_csv() (and/or TSV friends), save
 Create something new, probably by filtering or grouped-summarization of Gapminder.
 Incorporate factor levels.
 
-First, I load gapminder data and turn country and continent to factors for later manipulation.
+1. First, I load gapminder data and get the data for the mean GDP per capita of European countries.
 ```{r}
-(gap_tsv <- system.file("gapminder.tsv", package = "gapminder"))
-gapminder <- read_tsv(gap_tsv)
-str(gapminder, give.attr=FALSE)
-gapminderfactor <- gapminder %>%
-  mutate(country = factor(country),
-         continent = factor(continent))
-str(gapminderfactor)
+Europe_gdp_percap <- gapminder %>%
+  filter(continent=="Europe") %>%
+  group_by(country) %>%
+  summarise(gdp_percap = mean(gdpPercap)) 
+Europe_gdp_percap
 ```
 
+2. Then reorder country according to GDP per capita.
 ```{r}
-nlevels(gapminderfactor$country)
-```
-
-I am going to create a new dataset of gapminder data of Asia from 2001 to 2007 and reorder the level of country according to population.
-First, I filtered out the data I want and check the levels of country.
-```{r}
-gap_asia2000 <- gapminderfactor %>%
-  filter(continent=="Asia", year > 2000) %>%
+Europe_gdp_percap <- Europe_gdp_percap %>%
+  mutate(country= forcats::fct_reorder(country, gdp_percap)) %>%
   droplevels()
-levels(gap_asia2000$country)
+head(levels(Europe_gdp_percap$country))
+head(Europe_gdp_percap)
+compare_levels <- tibble(original=levels(Europe_gdp_percap$country))
 ```
 
-Then, I created a reordered set of data according to population.
+3. Save as CSV and RDS.
 ```{r}
-gap_asia2000reorder <- gap_asia2000 %>%
-  mutate(country= forcats::fct_reorder(gap_asia2000$country, gap_asia2000$pop, max))
-levels(gap_asia2000reorder$country)
+write_csv(Europe_gdp_percap, "Europe_gdp_percap.csv")
+saveRDS(Europe_gdp_percap, "Europe_gdp_percap.rds")
 ```
 
-Now, I am going to write the data.
+4. Read it back. So CSV file will not keep the reordered levels but rds will maintain the reorder levels. 
 ```{r}
-data.frame(gap_asia2000reorder)
-write_csv(gap_asia2000reorder, "gap_asia2000reorder.csv")
+Europe_gdp_percap_csv <- read_csv("Europe_gdp_percap.csv") %>%
+  mutate(country=factor(country))
+Europe_gdp_percap_rds <- readRDS("Europe_gdp_percap.rds")
+
+compare_levels <- compare_levels %>%
+  mutate(csv_levels = (levels(Europe_gdp_percap_csv$country)),
+         rds_levels = (levels(Europe_gdp_percap_rds$country)))
+compare_levels
 ```
 
-And read it again. It seems that the reordered data is kept in its reordered form.
-```{r}
-read_csv("gap_asia2000reorder.csv")
-levels(gap_asia2000reorder$country)
-```
 
 ## Visualization design
 Remake at least one figure or create a new one, in light of something I learned in the recent class meetings about visualization design and color. 
